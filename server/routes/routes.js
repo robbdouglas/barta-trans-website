@@ -1,10 +1,11 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const User = require("./models/User");
-const News = require("./models/News");
-const Job = require("./models/Job");
+const User = require("../models/User.js");
+const News = require("../models/News.js");
+const Job = require("../models/Job.js");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
+const authenticateToken = require("../middleware/authenticateToken");
 
 // Validation rules
 const userValidationRules = [
@@ -25,10 +26,12 @@ const validate = (req, res, next) => {
   }
   next();
 };
-// User CRUD operations
+
+// User API CRUD operations
 router.post("/users", userValidationRules, validate, async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
   const newUser = new User({ ...req.body, password: hashedPassword });
+
   try {
     await newUser.save();
     res.status(201).send(newUser);
