@@ -5,7 +5,8 @@ const News = require("../models/News.js");
 const Job = require("../models/Job.js");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
-const authenticateToken = require("../middleware/authenticateToken");
+const authenticateToken = require("../middleware/authenticateToken.js");
+const jwt = require("jsonwebtoken");
 
 // Validation rules
 const userValidationRules = [
@@ -37,6 +38,28 @@ router.post("/users", userValidationRules, validate, async (req, res) => {
     res.status(201).send(newUser);
   } catch (error) {
     res.status(400).send(error);
+  }
+});
+
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).send("Benutzer nicht gefunden");
+    }
+
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) {
+      return res.status(401).send("Ungültiges Passwort");
+    }
+
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    res.json({ token });
+  } catch (error) {
+    res.status(500).send(error);
   }
 });
 
