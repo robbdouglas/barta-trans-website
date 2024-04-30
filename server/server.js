@@ -16,18 +16,18 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+      scriptSrc: ["'self'"], // Entfernt 'unsafe-inline'
+      styleSrc: ["'self'", "https:"], // Entfernt 'unsafe-inline'
       imgSrc: ["'self'", "data:", "https:"],
       connectSrc: ["'self'", "wss:", "https:"],
-      upgradeInsecureRequests: [],
+      upgradeInsecureRequests: ["'self'"],
     },
   })
 );
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
+  windowMs: 15 * 60 * 1000, // 15 Minuten
+  max: 100, // Limit von 100 Anfragen pro Fenster pro IP
 });
 
 app.use(limiter);
@@ -35,10 +35,10 @@ app.use(limiter);
 app.use(
   session({
     secret: "secret",
-    saveUninitialized: true,
+    saveUninitialized: false, // Geändert zu false, um unnötige Session-Speicherung zu vermeiden
     resave: false,
     cookie: {
-      secure: false,
+      secure: true, // Aktiviert, um nur über HTTPS zu senden
       httpOnly: true,
       maxAge: 3600000, // 1 Stunde
     },
