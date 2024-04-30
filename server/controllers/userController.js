@@ -3,10 +3,19 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 exports.createUser = async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  const newUser = new User({ ...req.body, password: hashedPassword });
+  const { username, password } = req.body;
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = new User({ username, password: hashedPassword });
+  const userExists = await User.findOne({ username });
+  if (userExists) {
+    return res.status(400).send("User already exists");
+  }
   try {
     await newUser.save();
+    // Hide password in response
+    delete newUser.password;
+
     res.status(201).send(newUser);
   } catch (error) {
     res.status(400).send(error);
@@ -53,6 +62,7 @@ exports.updateUser = async (req, res) => {
     };
     const updatedUser = await User.findByIdAndUpdate(req.params.id, update, {
       new: true,
+      select: "-password",
     });
     res.status(200).send(updatedUser);
   } catch (error) {
