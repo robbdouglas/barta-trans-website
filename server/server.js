@@ -11,13 +11,13 @@ const app = express();
 
 app.use(express.json());
 
-// Konfiguration der Content Security Policy CSP
+// Configuration of Content Security Policy CSP
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"], // Entfernt 'unsafe-inline'
-      styleSrc: ["'self'", "https:"], // Entfernt 'unsafe-inline'
+      scriptSrc: ["'self'"], // removed 'unsafe-inline'
+      styleSrc: ["'self'", "https:"], // removed 'unsafe-inline'
       imgSrc: ["'self'", "data:", "https:"],
       connectSrc: ["'self'", "wss:", "https:"],
       upgradeInsecureRequests: ["'self'"],
@@ -26,8 +26,8 @@ app.use(
 );
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 Minuten
-  max: 100, // Limit von 100 Anfragen pro Fenster pro IP
+  windowMs: 15 * 60 * 1000, // 15 Minute
+  max: 100, // Limit of 100 requests pro Window pro IP
 });
 
 app.use(limiter);
@@ -35,12 +35,12 @@ app.use(limiter);
 app.use(
   session({
     secret: "secret",
-    saveUninitialized: false, // Geändert zu false, um unnötige Session-Speicherung zu vermeiden
+    saveUninitialized: false, // Changed to false to avoid unnecessary session storage
     resave: false,
     cookie: {
-      secure: true, // Aktiviert, um nur über HTTPS zu senden
+      secure: true, // Enabled to send over HTTPS only
       httpOnly: true,
-      maxAge: 3600000, // 1 Stunde
+      maxAge: 3600000, // 1 hour
     },
   })
 );
