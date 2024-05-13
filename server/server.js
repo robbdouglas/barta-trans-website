@@ -10,6 +10,8 @@ const rateLimit = require("express-rate-limit");
 const app = express();
 
 app.use(express.json());
+app.use(cors()); 
+
 
 // Configuration of Content Security Policy CSP
 app.use(
