@@ -11,6 +11,7 @@ const app = express();
 const userRoutes = require("./routes/userRoutes");
 const newsRoutes = require("./routes/newsRoutes");
 const jobRoutes = require("./routes/jobRoutes");
+const subscribeRoutes = require("./routes/subscribeRoutes");
 
 app.use(express.json());
 app.use(cors());
@@ -48,6 +49,7 @@ connectDB();
 app.use("/users", userRoutes);
 app.use("/news", newsRoutes);
 app.use("/jobs", jobRoutes);
+app.use("/subscribe", subscribeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
