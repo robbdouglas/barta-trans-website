@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import Dashboard from "./Dashboard";
+// import Dashboard from "./Dashboard";
 
 function Welcome() {
   return (
@@ -10,7 +10,7 @@ function Welcome() {
       <Link to="/news">
         <button>News</button>
       </Link>
-      <Dashboard />
+      {/* <Dashboard /> */}
       <Footer />
     </div>
   );
