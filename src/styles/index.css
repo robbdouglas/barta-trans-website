@@ -2,11 +2,8 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url(./assets/images/12ccc.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: black;
+  color: rgb(230, 212, 212);
 }

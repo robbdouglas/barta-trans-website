@@ -1,0 +1,16 @@
+.header-container {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.header-logo img {
+  height: 70px;
+  margin-left: 20px;
+}
+
+.fa-bars {
+  font-size: 30px;
+  margin: 20px;
+}
