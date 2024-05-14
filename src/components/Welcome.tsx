@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import Login from "./Login";
 // import Dashboard from "./Dashboard";
 
 function Welcome() {
@@ -11,6 +12,7 @@ function Welcome() {
         <button>News</button>
       </Link>
       {/* <Dashboard /> */}
+      <Login />
       <Footer />
     </div>
   );
