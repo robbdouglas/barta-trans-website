@@ -53,4 +53,5 @@ app.use("/subscribe", subscribeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log(`Routes: /users, /news, /jobs, /subscribe`);
 });
