@@ -8,9 +8,26 @@
 .header-logo img {
   height: 70px;
   margin-left: 20px;
+  border-radius: 5px;
 }
 
 .fa-bars {
   font-size: 30px;
   margin: 20px;
+}
+
+/* Header.css */
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px; /* Breite des Menüs */
+  height: 100%;
+  background-color: #9d2323; /* Hintergrundfarbe des Menüs */
+  transition: transform 0.3s ease-in-out; /* Übergangseffekt */
+  transform: translateX(100%); /* Menü außerhalb des Sichtbereichs */
+}
+
+.header-container.menu-open .menu {
+  transform: translateX(0); /* Menü einblenden */
 }
