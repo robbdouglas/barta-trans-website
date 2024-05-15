@@ -27,7 +27,7 @@ exports.loginUser = async (req, res) => {
   console.log("User login attempt:", req.body.username);
   const { username, password } = req.body;
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username }).select("+role");
     if (!user) {
       console.log("Login failed: User not found");
       return res.status(404).send("Benutzer nicht gefunden");
@@ -37,11 +37,15 @@ exports.loginUser = async (req, res) => {
       console.log("Login failed: Invalid password");
       return res.status(401).send("Ungültiges Passwort");
     }
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { userId: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
     console.log("User logged in successfully:", user);
-    res.json({ token });
+    res.json({ token, role: user.role });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).send(error);
@@ -78,7 +82,7 @@ exports.updateUser = async (req, res) => {
     res.status(200).send(updatedUser);
   } catch (error) {
     console.error("Error updating user:", error);
-    res.status (400).send(error);
+    res.status(400).send(error);
   }
 };
 

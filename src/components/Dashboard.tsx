@@ -37,12 +37,27 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedRole = localStorage.getItem("role");
+    console.log("Retrieved from localStorage:", { storedToken, storedRole });
     if (storedToken && storedRole) {
       setToken(storedToken);
       setUserRole(storedRole);
+      console.log(
+        "Token and role set from localStorage:",
+        storedToken,
+        storedRole
+      );
+    } else {
+      console.log("No token or role found in localStorage");
     }
-    fetchData();
+    // fetchData(); // Not needed here
   }, []);
+
+  useEffect(() => {
+    console.log("Token or userRole changed:", token, userRole);
+    if (token && userRole) {
+      fetchData();
+    }
+  }, [token, userRole]);
 
   const fetchData = async () => {
     await fetchJobs();
@@ -261,7 +276,7 @@ const Dashboard: React.FC = () => {
         />
         <button onClick={addNews}>Add News</button>
       </div>
-      {userRole === "superuser" && (
+      {userRole === "superuser" ? (
         <div>
           <h2>Manage Users</h2>
           <form onSubmit={handleCreateUser}>
@@ -286,8 +301,10 @@ const Dashboard: React.FC = () => {
             </div>
           ))}
         </div>
+      ) : (
+        <p>User role is not superuser. Current role: {userRole}</p>
       )}
-      <button onClick={handleLogout}>Logout</button> {/* Logout  */}
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
