@@ -39,59 +39,103 @@ const Dashboard: React.FC = () => {
       setUserRole(storedRole);
     }
     fetchData();
-  }, []);
+  }, [token, userRole]);
 
   const fetchData = async () => {
-    fetchNews();
-    fetchJobs();
+    await fetchNews();
+    await fetchJobs();
     if (userRole === 'superuser') {
-      fetchUsers();
+      await fetchUsers();
     }
   };
 
   const fetchNews = async () => {
-    const response = await axios.get('/news', { headers: { Authorization: `Bearer ${token}` } });
-    setNews(response.data);
+    try {
+      const response = await axios.get('/news', { headers: { Authorization: `Bearer ${token}` } });
+      if (Array.isArray(response.data)) {
+        setNews(response.data);
+      } else {
+        setNews([]);
+      }
+    } catch (error) {
+      console.error('Error fetching news:', error);
+    }
   };
 
   const fetchJobs = async () => {
-    const response = await axios.get('/jobs', { headers: { Authorization: `Bearer ${token}` } });
-    setJobs(response.data);
+    try {
+      const response = await axios.get('/jobs', { headers: { Authorization: `Bearer ${token}` } });
+      if (Array.isArray(response.data)) {
+        setJobs(response.data);
+      } else {
+        setJobs([]);
+      }
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+    }
   };
 
   const fetchUsers = async () => {
-    const response = await axios.get('/users', { headers: { Authorization: `Bearer ${token}` } });
-    setUsers(response.data);
+    try {
+      const response = await axios.get('/users', { headers: { Authorization: `Bearer ${token}` } });
+      if (Array.isArray(response.data)) {
+        setUsers(response.data);
+      } else {
+        setUsers([]);
+      }
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
   };
 
   const handleAddNews = async () => {
-    await axios.post('/news', { title: inputNews, content: "News Content" }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
-    setInputNews('');
-    fetchNews();
+    try {
+      await axios.post('/news', { title: inputNews, content: "News Content" }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
+      setInputNews('');
+      fetchNews();
+    } catch (error) {
+      console.error('Error adding news:', error);
+    }
   };
 
   const handleAddJob = async () => {
-    await axios.post('/jobs', { title: inputJob, description: "Job Description" }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
-    setInputJob('');
-    fetchJobs();
+    try {
+      await axios.post('/jobs', { title: inputJob, description: "Job Description" }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
+      setInputJob('');
+      fetchJobs();
+    } catch (error) {
+      console.error('Error adding job:', error);
+    }
   };
 
   const handleDeleteNews = async (id: string) => {
-    await axios.delete(`/news/${id}`, { headers: { Authorization: `Bearer ${token}` } });
-    fetchNews();
+    try {
+      await axios.delete(`/news/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      fetchNews();
+    } catch (error) {
+      console.error('Error deleting news:', error);
+    }
   };
 
   const handleDeleteJob = async (id: string) => {
-    await axios.delete(`/jobs/${id}`, { headers: { Authorization: `Bearer ${token}` } });
-    fetchJobs();
+    try {
+      await axios.delete(`/jobs/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      fetchJobs();
+    } catch (error) {
+      console.error('Error deleting job:', error);
+    }
   };
 
   const handleCreateUser = async (e: React.FormEvent) => {
     e.preventDefault();
     if (userRole === 'superuser') {
-      await axios.post('/users', { username: newUsername, role: newUserRole }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
-      setNewUsername('');
-      fetchUsers();
+      try {
+        await axios.post('/users', { username: newUsername, role: newUserRole }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
+        setNewUsername('');
+        fetchUsers();
+      } catch (error) {
+        console.error('Error creating user:', error);
+      }
     }
   };
 

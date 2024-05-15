@@ -1,22 +1,33 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse} from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+interface LoginResponse {
+  token: string;
+}
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
     try {
-      const response = await axios.post('http://localhost:4200/users/login', { username, password });
+      const response: AxiosResponse<LoginResponse> = await axios.post('http://localhost:4200/users/login', { username, password });
       localStorage.setItem('token', response.data.token);
-      alert('Login successful!');
-    } catch (err) {
-      setError('Login failed. Please check your username and password.');
+      toast.success('Login successful!');
+      navigate('/dashboard');  // Redirect to dashboard
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        toast.error(err.response?.data.message || 'Login failed. Please check your credentials.');
+      } else {
+        toast.error('An unexpected error occurred.');
+      }
     } finally {
       setLoading(false);
     }
@@ -44,11 +55,11 @@ const Login: React.FC = () => {
             required 
           />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
+          {loading ? 'Loading...' : 'Login'}
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 };
