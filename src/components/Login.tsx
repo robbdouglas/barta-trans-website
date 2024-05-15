@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
     try {
-      const response = await axios.post('http://localhost:4200/users/login', { username, password });
-      localStorage.setItem('token', response.data.token);
-      alert('Login successful!');
+      const response = await axios.post(`http://localhost:4000/users/login`, {
+        username,
+        password,
+      });
+      localStorage.setItem("token", response.data.token);
+      alert("Login successful!");
+      // if the response has a token, redirect to the dashboard
+      if (response.data.token) {
+        window.location.href = "/";
+      }
     } catch (err) {
-      setError('Login failed. Please check your username and password.');
+      setError("Login failed. Please check your username and password.");
     } finally {
       setLoading(false);
     }
@@ -28,25 +35,25 @@ const Login: React.FC = () => {
       <form onSubmit={handleLogin}>
         <div>
           <label>Username:</label>
-          <input 
-            type="text" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
-            required 
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
           />
         </div>
         <div>
           <label>Password:</label>
-          <input 
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <button type="submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
+          {loading ? "Logging in..." : "Login"}
         </button>
       </form>
     </div>

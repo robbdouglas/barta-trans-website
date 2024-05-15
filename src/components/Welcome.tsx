@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-// import Login from "./Login";
+import Login from "./Login";
 // import Subscribe from "./Subscribe";
 // import Dashboard from "./Dashboard";
 
@@ -12,8 +12,10 @@ function Welcome() {
       <Link to="/news">
         <button>News</button>
       </Link>
-      {/* <Dashboard /> */}
-      {/* <Login /> */}
+      <Link to="/dashboard">
+        <button>Dashboard</button>
+      </Link>
+      <Login />
       {/* <Subscribe /> */}
       <Footer />
     </div>
