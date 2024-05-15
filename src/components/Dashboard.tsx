@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
+interface Job {
 // Typdefinitionen für die News, Job und User Objekte
 interface Job {
   _id: string;
@@ -23,21 +24,19 @@ interface User {
 }
 
 const Dashboard: React.FC = () => {
-  const [jobs, setJobs] = useState<Job[]>([]);
-  const [news, setNews] = useState<News[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
-  const [jobTitle, setJobTitle] = useState<string>('');
-  const [jobDescription, setJobDescription] = useState<string>('');
-  const [newsTitle, setNewsTitle] = useState<string>('');
-  const [newsContent, setNewsContent] = useState<string>('');
+  const [news, setNews] = useState<NewsItem[]>([]);
+  const [jobs, setJobs] = useState<JobItem[]>([]);
+  const [users, setUsers] = useState<UserItem[]>([]);
+  const [inputNews, setInputNews] = useState<string>('');
+  const [inputJob, setInputJob] = useState<string>('');
   const [newUsername, setNewUsername] = useState<string>('');
   const [newUserRole, setNewUserRole] = useState<string>('admin');
   const [token, setToken] = useState<string>('');
   const [userRole, setUserRole] = useState<string>('');
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    const storedRole = localStorage.getItem('role');
+    const storedToken = localStorage.getItem("token");
+    const storedRole = localStorage.getItem("role");
     if (storedToken && storedRole) {
       setToken(storedToken);
       setUserRole(storedRole);
@@ -46,8 +45,8 @@ const Dashboard: React.FC = () => {
   }, []);
 
   const fetchData = async () => {
-    fetchJobs();
     fetchNews();
+    fetchJobs();
     if (userRole === 'superuser') {
       fetchUsers();
     }
@@ -69,124 +68,60 @@ const Dashboard: React.FC = () => {
   };
 
   const fetchNews = async () => {
-    try {
-      const response = await axios.get('http://localhost:4200/news/news', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      if (Array.isArray(response.data)) {
-        setNews(response.data);
-      } else {
-        console.error('Error: Expected array for news');
-      }
-    } catch (error) {
-      console.error('Error fetching news:', error);
-    }
+    const response = await axios.get('/news', { headers: { Authorization: `Bearer ${token}` } });
+    setNews(response.data);
+  };
+
+  const fetchJobs = async () => {
+    const response = await axios.get('/jobs', { headers: { Authorization: `Bearer ${token}` } });
+    setJobs(response.data);
   };
 
   const fetchUsers = async () => {
-    try {
-      const response = await axios.get('http://localhost:4200/users/users', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setUsers(response.data);
-    } catch (error) {
-      console.error('Error fetching users:', error);
-    }
+    const response = await axios.get('/users', { headers: { Authorization: `Bearer ${token}` } });
+    setUsers(response.data);
   };
 
-  const addJob = async () => {
-    try {
-      const response = await axios.post('http://localhost:4200/jobs/jobs', {
-        title: jobTitle,
-        description: jobDescription,
-      }, {
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
-      });
-      if (response.data && response.data._id) {
-        setJobs((prevJobs) => [...prevJobs, response.data]);
-      }
-      setJobTitle('');
-      setJobDescription('');
-    } catch (error) {
-      console.error('Error adding job:', error);
-    }
+  const handleAddNews = async () => {
+    await axios.post('/news', { title: inputNews, content: "News Content" }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
+    setInputNews('');
+    fetchNews();
   };
 
-  const addNews = async () => {
-    try {
-      const response = await axios.post('http://localhost:4200/news/news', {
-        title: newsTitle,
-        content: newsContent,
-      }, {
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
-      });
-      if (response.data && response.data._id) {
-        setNews((prevNews) => [...prevNews, response.data]);
-      }
-      setNewsTitle('');
-      setNewsContent('');
-    } catch (error) {
-      console.error('Error adding news:', error);
-    }
+  const handleAddJob = async () => {
+    await axios.post('/jobs', { title: inputJob, description: "Job Description" }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
+    setInputJob('');
+    fetchJobs();
   };
 
-  const deleteJob = async (id: string) => {
-    try {
-      await axios.delete(`http://localhost:4200/jobs/jobs/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setJobs((prevJobs) => prevJobs.filter((job) => job._id !== id));
-    } catch (error) {
-      console.error('Error deleting job:', error);
-    }
+  const handleDeleteNews = async (id: string) => {
+    await axios.delete(`/news/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+    fetchNews();
   };
 
-  const deleteNews = async (id: string) => {
-    try {
-      await axios.delete(`http://localhost:4200/news/news/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setNews((prevNews) => prevNews.filter((newsItem) => newsItem._id !== id));
-    } catch (error) {
-      console.error('Error deleting news:', error);
-    }
+  const handleDeleteJob = async (id: string) => {
+    await axios.delete(`/jobs/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+    fetchJobs();
   };
 
   const handleCreateUser = async (e: React.FormEvent) => {
     e.preventDefault();
     if (userRole === 'superuser') {
-      try {
-        await axios.post('http://localhost:4200/users/users', {
-          username: newUsername,
-          role: newUserRole
-        }, {
-          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
-        });
-        setNewUsername('');
-        fetchUsers();
-      } catch (error) {
-        console.error('Error creating user:', error);
-      }
+      await axios.post('/users', { username: newUsername, role: newUserRole }, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } });
+      setNewUsername('');
+      fetchUsers();
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    window.location.href = "/"; // redirect to welcome page
   };
 
   return (
     <div>
       <h1>Dashboard</h1>
-
-      <h2>Jobs</h2>
-      <ul>
-        {Array.isArray(jobs) && jobs.length > 0 ? (
-          jobs.map((job) => (
-            <li key={job._id}>
-              {job.title}: {job.description}
-              <button onClick={() => deleteJob(job._id)}>Delete</button>
-            </li>
-          ))
-        ) : (
-          <li>No jobs available</li>
-        )}
-      </ul>
       <div>
         <h3>Add Job</h3>
         <input
@@ -203,20 +138,6 @@ const Dashboard: React.FC = () => {
         />
         <button onClick={addJob}>Add Job</button>
       </div>
-
-      <h2>News</h2>
-      <ul>
-        {Array.isArray(news) && news.length > 0 ? (
-          news.map((newsItem) => (
-            <li key={newsItem._id}>
-              {newsItem.title}: {newsItem.content}
-              <button onClick={() => deleteNews(newsItem._id)}>Delete</button>
-            </li>
-          ))
-        ) : (
-          <li>No news available</li>
-        )}
-      </ul>
       <div>
         <h3>Add News</h3>
         <input
@@ -233,7 +154,6 @@ const Dashboard: React.FC = () => {
         />
         <button onClick={addNews}>Add News</button>
       </div>
-
       {userRole === 'superuser' && (
         <div>
           <h2>Manage Users</h2>
@@ -260,6 +180,7 @@ const Dashboard: React.FC = () => {
           ))}
         </div>
       )}
+      <button onClick={handleLogout}>Logout</button> {/* Logout  */}
     </div>
   );
 };
