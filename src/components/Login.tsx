@@ -18,7 +18,7 @@ const Login: React.FC = () => {
       });
       localStorage.setItem("token", response.data.token);
       alert("Login successful!");
-      // if the response has a token, redirect to the dashboard
+      // if the response has a token, redirect to the dashboard(momentan to welcome)
       if (response.data.token) {
         window.location.href = "/";
       }
