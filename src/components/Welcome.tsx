@@ -13,6 +13,7 @@ function Welcome() {
         <button>News</button>
       </Link>
       {/* <Dashboard /> */}
+
       <Login />
       {/* <Subscribe /> */}
       <Footer />

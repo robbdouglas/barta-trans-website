@@ -7,12 +7,14 @@ const Login: React.FC = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const port = import.meta.env.REACT_APP_PORT; 
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post(`http://localhost:4000/users/login`, {
+      const response = await axios.post(`http://localhost:${port}/users/login`, {
         username,
         password,
       });
