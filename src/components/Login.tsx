@@ -17,6 +17,7 @@ const Login: React.FC = () => {
         password,
       });
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", response.data.role); // Role is saved in local storage
       alert("Login successful!");
       // if the response has a token, redirect to the dashboard(momentan to welcome)
       if (response.data.token) {
