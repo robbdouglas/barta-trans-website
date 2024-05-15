@@ -11,9 +11,14 @@
   border-radius: 5px;
 }
 
-.fa-bars {
+.fa-bars,
+.close-menu-btn {
   font-size: 30px;
   margin: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
 }
 
 .menu {
@@ -29,6 +34,27 @@
 
 .header-container.menu-open .menu {
   transform: translateX(0); /* Menü einblenden */
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.languages-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.languages-container button {
+  margin: 4px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 ul {

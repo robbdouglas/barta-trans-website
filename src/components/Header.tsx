@@ -10,9 +10,13 @@ function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      setIsMenuOpen(false);
+      closeMenu();
     }
   };
 
@@ -33,6 +37,16 @@ function Header() {
           <i className="fa-solid fa-bars"></i>
         </div>
         <div className="menu" ref={menuRef}>
+          <div className="menu-header">
+            <button className="close-menu-btn" onClick={closeMenu}>
+              X
+            </button>
+            <div className="languages-container">
+              <button className="german-btn">DE</button>
+              <button className="german-btn">EN</button>
+              <button className="german-btn">SLO</button>
+            </div>
+          </div>
           <ul>
             <li>
               <Link to="/">Home</Link>
