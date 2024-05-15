@@ -194,10 +194,15 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    window.location.href = "/"; // redirect to welcome page
+  };
+
   return (
     <div>
       <h1>Dashboard</h1>
-
       <h2>Jobs</h2>
       <ul>
         {Array.isArray(jobs) && jobs.length > 0 ? (
@@ -227,7 +232,6 @@ const Dashboard: React.FC = () => {
         />
         <button onClick={addJob}>Add Job</button>
       </div>
-
       <h2>News</h2>
       <ul>
         {Array.isArray(news) && news.length > 0 ? (
@@ -257,7 +261,6 @@ const Dashboard: React.FC = () => {
         />
         <button onClick={addNews}>Add News</button>
       </div>
-
       {userRole === "superuser" && (
         <div>
           <h2>Manage Users</h2>
@@ -284,6 +287,7 @@ const Dashboard: React.FC = () => {
           ))}
         </div>
       )}
+      <button onClick={handleLogout}>Logout</button> {/* Logout  */}
     </div>
   );
 };
