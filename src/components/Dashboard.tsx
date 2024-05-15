@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// Typdefinitionen für die News, Job und User Objekte
 interface Job {
   _id: string;
   title: string;
@@ -54,7 +55,7 @@ const Dashboard: React.FC = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('/jobs', {
+      const response = await axios.get('http://localhost:4200/jobs/jobs', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (Array.isArray(response.data)) {
@@ -69,7 +70,7 @@ const Dashboard: React.FC = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get('/news', {
+      const response = await axios.get('http://localhost:4200/news/news', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (Array.isArray(response.data)) {
@@ -84,7 +85,7 @@ const Dashboard: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/users', {
+      const response = await axios.get('http://localhost:4200/users/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data);
@@ -95,7 +96,7 @@ const Dashboard: React.FC = () => {
 
   const addJob = async () => {
     try {
-      const response = await axios.post('/jobs', {
+      const response = await axios.post('http://localhost:4200/jobs/jobs', {
         title: jobTitle,
         description: jobDescription,
       }, {
@@ -113,7 +114,7 @@ const Dashboard: React.FC = () => {
 
   const addNews = async () => {
     try {
-      const response = await axios.post('/news', {
+      const response = await axios.post('http://localhost:4200/news/news', {
         title: newsTitle,
         content: newsContent,
       }, {
@@ -131,7 +132,7 @@ const Dashboard: React.FC = () => {
 
   const deleteJob = async (id: string) => {
     try {
-      await axios.delete(`/jobs/${id}`, {
+      await axios.delete(`http://localhost:4200/jobs/jobs/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setJobs((prevJobs) => prevJobs.filter((job) => job._id !== id));
@@ -142,7 +143,7 @@ const Dashboard: React.FC = () => {
 
   const deleteNews = async (id: string) => {
     try {
-      await axios.delete(`/news/${id}`, {
+      await axios.delete(`http://localhost:4200/news/news/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNews((prevNews) => prevNews.filter((newsItem) => newsItem._id !== id));
@@ -155,7 +156,7 @@ const Dashboard: React.FC = () => {
     e.preventDefault();
     if (userRole === 'superuser') {
       try {
-        await axios.post('/users', {
+        await axios.post('http://localhost:4200/users/users', {
           username: newUsername,
           role: newUserRole
         }, {
