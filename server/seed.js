@@ -6,7 +6,7 @@ const Job = require("./models/Job.js"); // Passe den Pfad entsprechend an
 const News = require("./models/News.js"); // Passe den Pfad entsprechend an
 
 // Verbindung zur MongoDB herstellen
-mongoose.connect("mongodb+srv://WebDevOli:OliveR@data.bd9tmlz.mongodb.net/barta", {
+mongoose.connect("DB URL", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
