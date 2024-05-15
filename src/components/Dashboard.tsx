@@ -15,22 +15,48 @@ interface News {
   author: string; // Passe diesen Typ entsprechend an, falls nötig
 }
 
+interface User {
+  _id: string;
+  username: string;
+  role: string;
+}
+
 const Dashboard: React.FC = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [news, setNews] = useState<News[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [jobTitle, setJobTitle] = useState<string>('');
   const [jobDescription, setJobDescription] = useState<string>('');
   const [newsTitle, setNewsTitle] = useState<string>('');
   const [newsContent, setNewsContent] = useState<string>('');
+  const [newUsername, setNewUsername] = useState<string>('');
+  const [newUserRole, setNewUserRole] = useState<string>('admin');
+  const [token, setToken] = useState<string>('');
+  const [userRole, setUserRole] = useState<string>('');
 
   useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    const storedRole = localStorage.getItem('role');
+    if (storedToken && storedRole) {
+      setToken(storedToken);
+      setUserRole(storedRole);
+    }
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
     fetchJobs();
     fetchNews();
-  }, []);
+    if (userRole === 'superuser') {
+      fetchUsers();
+    }
+  };
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('/jobs');
+      const response = await axios.get('/jobs', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       if (Array.isArray(response.data)) {
         setJobs(response.data);
       } else {
@@ -43,7 +69,9 @@ const Dashboard: React.FC = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get('/news');
+      const response = await axios.get('/news', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       if (Array.isArray(response.data)) {
         setNews(response.data);
       } else {
@@ -54,11 +82,24 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get('/users', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
+
   const addJob = async () => {
     try {
       const response = await axios.post('/jobs', {
         title: jobTitle,
         description: jobDescription,
+      }, {
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
       });
       if (response.data && response.data._id) {
         setJobs((prevJobs) => [...prevJobs, response.data]);
@@ -75,6 +116,8 @@ const Dashboard: React.FC = () => {
       const response = await axios.post('/news', {
         title: newsTitle,
         content: newsContent,
+      }, {
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
       });
       if (response.data && response.data._id) {
         setNews((prevNews) => [...prevNews, response.data]);
@@ -88,7 +131,9 @@ const Dashboard: React.FC = () => {
 
   const deleteJob = async (id: string) => {
     try {
-      await axios.delete(`/jobs/${id}`);
+      await axios.delete(`/jobs/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setJobs((prevJobs) => prevJobs.filter((job) => job._id !== id));
     } catch (error) {
       console.error('Error deleting job:', error);
@@ -97,17 +142,37 @@ const Dashboard: React.FC = () => {
 
   const deleteNews = async (id: string) => {
     try {
-      await axios.delete(`/news/${id}`);
+      await axios.delete(`/news/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setNews((prevNews) => prevNews.filter((newsItem) => newsItem._id !== id));
     } catch (error) {
       console.error('Error deleting news:', error);
     }
   };
 
+  const handleCreateUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (userRole === 'superuser') {
+      try {
+        await axios.post('/users', {
+          username: newUsername,
+          role: newUserRole
+        }, {
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
+        });
+        setNewUsername('');
+        fetchUsers();
+      } catch (error) {
+        console.error('Error creating user:', error);
+      }
+    }
+  };
+
   return (
     <div>
       <h1>Dashboard</h1>
-      
+
       <h2>Jobs</h2>
       <ul>
         {Array.isArray(jobs) && jobs.length > 0 ? (
@@ -167,6 +232,33 @@ const Dashboard: React.FC = () => {
         />
         <button onClick={addNews}>Add News</button>
       </div>
+
+      {userRole === 'superuser' && (
+        <div>
+          <h2>Manage Users</h2>
+          <form onSubmit={handleCreateUser}>
+            <input
+              value={newUsername}
+              onChange={(e) => setNewUsername(e.target.value)}
+              placeholder="Username"
+              required
+            />
+            <select
+              value={newUserRole}
+              onChange={(e) => setNewUserRole(e.target.value)}
+            >
+              <option value="admin">Admin</option>
+              <option value="superuser">Superuser</option>
+            </select>
+            <button type="submit">Create User</button>
+          </form>
+          {users.map((user) => (
+            <div key={user._id}>
+              {user.username} - {user.role}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
