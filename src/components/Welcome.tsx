@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Login from "./Login";
 // import Subscribe from "./Subscribe";
-import Dashboard from "./Dashboard";
+// import Dashboard from "./Dashboard";
 
 function Welcome() {
   return (
@@ -12,7 +12,7 @@ function Welcome() {
       <Link to="/news">
         <button>News</button>
       </Link>
-      <Dashboard />
+      {/* <Dashboard /> */}
       <Login />
       {/* <Subscribe /> */}
       <Footer />

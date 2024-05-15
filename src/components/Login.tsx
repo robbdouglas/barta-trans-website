@@ -20,7 +20,7 @@ const Login: React.FC = () => {
       alert("Login successful!");
       // if the response has a token, redirect to the dashboard(momentan to welcome)
       if (response.data.token) {
-        window.location.href = "/";
+        window.location.href = "/dashboard";
       }
     } catch (err) {
       setError("Login failed. Please check your username and password.");
