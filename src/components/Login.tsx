@@ -7,7 +7,7 @@ const Login: React.FC = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const port = import.meta.env.REACT_APP_PORT; 
+  const port = import.meta.env.VITE_REACT_APP_PORT; 
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

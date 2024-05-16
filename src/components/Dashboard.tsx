@@ -35,7 +35,7 @@ const Dashboard: React.FC = () => {
   const [token, setToken] = useState<string>("");
   const [userRole, setUserRole] = useState<string>("");
 
-  const port = import.meta.env.REACT_APP_PORT || 4200;
+  const port = import.meta.env.VITE_REACT_APP_PORT || 4200;
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
