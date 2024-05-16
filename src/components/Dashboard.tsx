@@ -293,7 +293,9 @@ const Dashboard: React.FC = () => {
               <option value="admin">Admin</option>
               <option value="superuser">Superuser</option>
             </select>
-            <button type="submit">Create User</button>
+            <button type="submit" onClick={handleCreateUser}>
+              Create User
+            </button>
           </form>
           {users.map((user) => (
             <div key={user._id}>
