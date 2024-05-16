@@ -63,6 +63,10 @@ function Header() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
+
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
             <li>_______________</li>
             <li>
               <div className="admin-login-container">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Header from "./Header";
 
 interface Job {
   _id: string;
@@ -219,6 +220,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
+      <Header />
       <h1>Dashboard</h1>
       <h2>Jobs</h2>
       <ul>
