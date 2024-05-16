@@ -15,16 +15,18 @@ const subscribeRoutes = require("./routes/subscribeRoutes");
 
 app.use(express.json());
 app.use(cors());
-app.use(helmet.contentSecurityPolicy({
+app.use(
+  helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"], 
-        styleSrc: ["'self'", "https:"], 
-        imgSrc: ["'self'", "data:", "https:"],
-        connectSrc: ["'self'", "wss:", "https:"],
-        upgradeInsecureRequests: ["'self'"],
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'", "https:"],
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'", "wss:", "https:"],
+      upgradeInsecureRequests: ["'self'"],
     },
-}));
+  })
+);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -33,16 +35,18 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-app.use(session({
+app.use(
+  session({
     secret: "secret",
     saveUninitialized: false,
     resave: false,
     cookie: {
-        secure: true,
-        httpOnly: true,
-        maxAge: 3600000,
+      secure: true,
+      httpOnly: true,
+      maxAge: 3600000,
     },
-}));
+  })
+);
 
 connectDB();
 
@@ -53,4 +57,5 @@ app.use("/subscribe", subscribeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log(`Routes: /users, /news, /jobs, /subscribe`);
 });
