@@ -6,6 +6,8 @@ import Jobs from "./components/Jobs";
 import Contact from "./components/Contact";
 import Impressum from "./components/Impressum";
 import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<ProtectedRoute component={Dashboard} />} />
           <Route path="*" element={<h1>ERROR 404: PAGE NOT FOUND</h1>} />
         </Routes>
       </Router>
