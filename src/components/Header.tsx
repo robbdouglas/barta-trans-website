@@ -66,7 +66,7 @@ function Header() {
             <li>_______________</li>
             <li>
               <div className="admin-login-container">
-                <Link to="/admin-login">Admin Login</Link>
+                <Link to="/login">Admin Login</Link>
               </div>
             </li>
           </ul>
