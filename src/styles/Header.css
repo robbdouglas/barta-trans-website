@@ -1,0 +1,80 @@
+.header-container {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.header-logo img {
+  height: 70px;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+.fa-bars,
+.close-menu-btn {
+  font-size: 30px;
+  margin: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(180deg, rgb(51, 123, 200), rgb(23, 40, 106));
+  transition: transform 0.3s ease-in-out; /* Übergangseffekt */
+  transform: translateX(100%); /* Menü außerhalb des Sichtbereichs */
+}
+
+.header-container.menu-open .menu {
+  transform: translateX(0); /* Menü einblenden */
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.languages-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.languages-container button {
+  margin: 4px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+li {
+  margin: 10px 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.admin-login-container {
+  margin-top: 20px;
+}
