@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./Header";
-
+import { useNavigate } from "react-router-dom";
 interface Job {
   _id: string;
   title: string;
@@ -36,6 +36,7 @@ const Dashboard: React.FC = () => {
   const [newUserRole, setNewUserRole] = useState<string>("admin");
   const [token, setToken] = useState<string>("");
   const [userRole, setUserRole] = useState<string>("");
+  const navigate = useNavigate();
 
   const [editUserId, setEditUserId] = useState<string | null>(null);
   const [editUsername, setEditUsername] = useState<string>("");
@@ -266,7 +267,7 @@ const Dashboard: React.FC = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
-    window.location.href = "/"; // redirect to welcome page
+    navigate("/");
   };
 
   return (
