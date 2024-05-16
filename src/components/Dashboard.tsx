@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 interface Job {
   _id: string;
   title: string;
@@ -35,7 +34,7 @@ const Dashboard: React.FC = () => {
   const [token, setToken] = useState<string>("");
   const [userRole, setUserRole] = useState<string>("");
 
-  const port = import.meta.env.REACT_APP_PORT || 4200;
+  const port = import.meta.env.VITE_REACT_APP_PORT || 4200;
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -89,7 +88,7 @@ const Dashboard: React.FC = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get(`http://localhost:${port}/news/news`, {
+      const response = await axios.get(`http://localhost:4000/news/news`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (Array.isArray(response.data)) {
