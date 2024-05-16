@@ -37,6 +37,11 @@ const Dashboard: React.FC = () => {
   const [token, setToken] = useState<string>("");
   const [userRole, setUserRole] = useState<string>("");
 
+  const [editUserId, setEditUserId] = useState<string | null>(null);
+  const [editUsername, setEditUsername] = useState<string>("");
+  const [editPassword, setEditPassword] = useState<string>("");
+  const [editUserRole, setEditUserRole] = useState<string>("");
+
   const port = import.meta.env.VITE_REACT_APP_PORT || 4200;
 
   useEffect(() => {
@@ -217,6 +222,36 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  const handleUpdateUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (userRole === "superuser" && editUserId) {
+      try {
+        await axios.put(
+          `http://localhost:${port}/users/users/${editUserId}`,
+          {
+            username: editUsername,
+            password: editPassword,
+            role: editUserRole,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setEditUserId(null);
+        setEditUsername("");
+        setEditPassword("");
+        setEditUserRole("");
+        fetchUsers();
+      } catch (error) {
+        console.error("Error updating user:", error);
+      }
+    }
+  };
+
   const handleDeleteUser = async (id: string) => {
     try {
       await axios.delete(`http://localhost:${port}/users/users/${id}`, {
@@ -306,7 +341,6 @@ const Dashboard: React.FC = () => {
               placeholder="Username"
               required
             />
-            {/* for newpassword */}
             <input
               type="password"
               value={newPassword}
@@ -325,22 +359,61 @@ const Dashboard: React.FC = () => {
               Create User
             </button>
           </form>
-          {users.map((user) => (
-            <div key={user._id}>
-              <li>
-                <div>
-                  <span>{user.username} - </span>
-                  <span>role: {user.role}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteUser(user._id)}
-                  >
-                    Delete User
-                  </button>
-                </div>
+          {editUserId && (
+            <form onSubmit={handleUpdateUser}>
+              <h3>Edit User</h3>
+              <input
+                value={editUsername}
+                onChange={(e) => setEditUsername(e.target.value)}
+                placeholder="Username"
+                required
+              />
+              <input
+                type="password"
+                value={editPassword}
+                onChange={(e) => setEditPassword(e.target.value)}
+                placeholder="Password"
+                required
+              />
+              <select
+                value={editUserRole}
+                onChange={(e) => setEditUserRole(e.target.value)}
+              >
+                <option value="admin">Admin</option>
+                <option value="superuser">Superuser</option>
+              </select>
+              <button type="submit">Update User</button>
+              <button type="button" onClick={() => setEditUserId(null)}>
+                Cancel
+              </button>
+            </form>
+          )}
+          <ul>
+            {users.map((user) => (
+              <li key={user._id}>
+                <span>
+                  {user.username} - role: {user.role}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditUserId(user._id);
+                    setEditUsername(user.username);
+                    setEditPassword(""); // Do not populate password for security reasons
+                    setEditUserRole(user.role);
+                  }}
+                >
+                  Edit User
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteUser(user._id)}
+                >
+                  Delete User
+                </button>
               </li>
-            </div>
-          ))}
+            ))}
+          </ul>
         </div>
       ) : (
         <p>User role is not superuser. Current role: {userRole}</p>
