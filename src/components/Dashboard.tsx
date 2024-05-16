@@ -19,6 +19,7 @@ interface News {
 interface User {
   _id: string;
   username: string;
+  password: string;
   role: string;
 }
 
@@ -31,6 +32,7 @@ const Dashboard: React.FC = () => {
   const [newsTitle, setNewsTitle] = useState<string>("");
   const [newsContent, setNewsContent] = useState<string>("");
   const [newUsername, setNewUsername] = useState<string>("");
+  const [newPassword, setNewPassword] = useState<string>("");
   const [newUserRole, setNewUserRole] = useState<string>("admin");
   const [token, setToken] = useState<string>("");
   const [userRole, setUserRole] = useState<string>("");
@@ -195,6 +197,7 @@ const Dashboard: React.FC = () => {
           `http://localhost:${port}/users/users`,
           {
             username: newUsername,
+            password: newPassword,
             role: newUserRole,
           },
           {
@@ -204,7 +207,9 @@ const Dashboard: React.FC = () => {
             },
           }
         );
+
         setNewUsername("");
+        setNewPassword("");
         fetchUsers();
       } catch (error) {
         console.error("Error creating user:", error);
@@ -290,6 +295,15 @@ const Dashboard: React.FC = () => {
               placeholder="Username"
               required
             />
+            {/* for newpassword
+             */}
+            <input
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="Password"
+              required
+            />
             <select
               value={newUserRole}
               onChange={(e) => setNewUserRole(e.target.value)}
@@ -303,7 +317,12 @@ const Dashboard: React.FC = () => {
           </form>
           {users.map((user) => (
             <div key={user._id}>
-              {user.username} - {user.role}
+              <li>
+                <div>
+                  <span>{user.username} - </span>
+                  <span>role: {user.role}</span>
+                </div>
+              </li>
             </div>
           ))}
         </div>
