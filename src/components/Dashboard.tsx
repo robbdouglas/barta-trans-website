@@ -91,7 +91,7 @@ const Dashboard: React.FC = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/news/news`, {
+      const response = await axios.get(`http://localhost:${port}/news/news`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (Array.isArray(response.data)) {
@@ -217,6 +217,17 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  const handleDeleteUser = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:${port}/users/users/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
@@ -295,8 +306,7 @@ const Dashboard: React.FC = () => {
               placeholder="Username"
               required
             />
-            {/* for newpassword
-             */}
+            {/* for newpassword */}
             <input
               type="password"
               value={newPassword}
@@ -321,6 +331,12 @@ const Dashboard: React.FC = () => {
                 <div>
                   <span>{user.username} - </span>
                   <span>role: {user.role}</span>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteUser(user._id)}
+                  >
+                    Delete User
+                  </button>
                 </div>
               </li>
             </div>
