@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Importiere useNavigate
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Erstelle eine Instanz von useNavigate
 
   const port = import.meta.env.VITE_REACT_APP_PORT;
 
@@ -21,15 +23,15 @@ const Login: React.FC = () => {
           password,
         }
       );
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("role", response.data.role); // Role is saved in local storage
+      localStorage.setItem("token", response.data.token); // Stelle sicher, dass der Token-Name hier und in deiner ProtectedRoute übereinstimmt
+      localStorage.setItem("role", response.data.role);
       alert("Login successful!");
-      // if the response has a token, redirect to the dashboard(momentan to welcome)
       if (response.data.token) {
-        window.location.href = "/dashboard";
+        navigate("/dashboard"); // Verwende navigate anstelle von window.location.href
       }
     } catch (err) {
       setError("Login failed. Please check your username and password.");
+      console.error(err);
     } finally {
       setLoading(false);
     }
