@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const newsletterSubscriberSchema = new mongoose.Schema({
+const userSubscribeSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   firstName: { type: String },
   lastName: { type: String },

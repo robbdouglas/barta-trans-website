@@ -1,7 +1,6 @@
 const express = require("express");
 const connectDB = require("./dbconnect.js");
 const { PORT } = require("./dotenvconfig.js");
-const appRoutes = require("./routes/routes.js");
 const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
@@ -9,45 +8,48 @@ const session = require("express-session");
 const rateLimit = require("express-rate-limit");
 const app = express();
 
-app.use(express.json());
+const userRoutes = require("./routes/userRoutes");
+const newsRoutes = require("./routes/newsRoutes");
+const jobRoutes = require("./routes/jobRoutes");
+const subscribeRoutes = require("./routes/subscribeRoutes");
 
-// Configuration of Content Security Policy CSP
-app.use(
-  helmet.contentSecurityPolicy({
+app.use(express.json());
+app.use(cors());
+app.use(helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"], // removed 'unsafe-inline'
-      styleSrc: ["'self'", "https:"], // removed 'unsafe-inline'
-      imgSrc: ["'self'", "data:", "https:"],
-      connectSrc: ["'self'", "wss:", "https:"],
-      upgradeInsecureRequests: ["'self'"],
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"], 
+        styleSrc: ["'self'", "https:"], 
+        imgSrc: ["'self'", "data:", "https:"],
+        connectSrc: ["'self'", "wss:", "https:"],
+        upgradeInsecureRequests: ["'self'"],
     },
-  })
-);
+}));
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 Minute
-  max: 100, // Limit of 100 requests pro Window pro IP
+  windowMs: 15 * 60 * 1000,
+  max: 100,
 });
 
 app.use(limiter);
 
-app.use(
-  session({
+app.use(session({
     secret: "secret",
-    saveUninitialized: false, // Changed to false to avoid unnecessary session storage
+    saveUninitialized: false,
     resave: false,
     cookie: {
-      secure: true, // Enabled to send over HTTPS only
-      httpOnly: true,
-      maxAge: 3600000, // 1 hour
+        secure: true,
+        httpOnly: true,
+        maxAge: 3600000,
     },
-  })
-);
+}));
 
 connectDB();
 
-app.use("/", appRoutes);
+app.use("/users", userRoutes);
+app.use("/news", newsRoutes);
+app.use("/jobs", jobRoutes);
+app.use("/subscribe", subscribeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
