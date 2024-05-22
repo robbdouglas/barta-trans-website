@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import "../styles/Dashboard.css";
 interface Job {
   _id: string;
   title: string;
