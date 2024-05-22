@@ -9,7 +9,7 @@ const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // Erstelle eine Instanz von useNavigate
 
-  const port = import.meta.env.VITE_REACT_APP_PORT;
+  // const port = import.meta.env.VITE_REACT_APP_PORT;
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const Login: React.FC = () => {
     setError("");
     try {
       const response = await axios.post(
-        `http://localhost:${port}/users/login`,
+        `https://barta-trans-server.onrender.com/users/login`,
         {
           username,
           password,
