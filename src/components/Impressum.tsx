@@ -1,6 +1,10 @@
+import Footer from "./Footer";
+import Header from "./Header";
+
 function Impressum() {
   return (
     <div className="impressum-container">
+      <Header />
       <h1>Impressum</h1>
       <p><strong>Angaben gemäß § 5 TMG:</strong></p>
       <p>Barta Trans s.r.o.<br />
@@ -23,6 +27,7 @@ function Impressum() {
          Levente Barta<br />
          Male Kosihy 2<br />
          SK - 943 61 Male Kosihy</p>
+         <Footer />
     </div>
   );
 }
