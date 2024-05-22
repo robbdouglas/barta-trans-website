@@ -1,4 +1,5 @@
 import "../styles/Footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -11,7 +12,10 @@ function Footer() {
       <p className="copyright">
         <i className="fa-regular fa-copyright"></i> 2024 Barta Trans s.r.o.
       </p>
-      <div className="impressum-and-more"></div>
+      <div className="impressum-and-more">
+      <Link to="/impressum">Impressum</Link>
+
+      </div>
     </div>
   );
 }
