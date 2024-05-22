@@ -9,37 +9,9 @@ function Welcome() {
       <section className="welcome-container">
         <h1>Welcome to Barta Trans s.r.o.</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-          earum neque totam consequuntur accusantium corporis eaque? Nam eaque
-          assumenda, ex quis reiciendis dolorum dignissimos qui ipsam libero
-          quas veritatis enim ducimus, ipsa soluta. Delectus quaerat minima
-          doloribus inventore corporis, distinctio nulla architecto perferendis
-          nisi asperiores quas, saepe quam ut laudantium.
+          Barta Trans is a dynamic and growing transportation company founded in September 2021. Our company is dedicated to providing high-quality transport and logistics services to our clients. Shortly after our establishment, we managed to build a reliable and experienced team committed to meeting customer needs and delivering high-quality services. Our goal is to offer flexible and efficient solutions for our customers, whether in national or international transport as well as in logistics tasks. We handle both small and large freight volumes and strive to fulfill every transport task at a high level. Thank you for visiting our website, and we hope to count you among our customers soon!
         </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-          earum neque totam consequuntur accusantium corporis eaque? Nam eaque
-          assumenda, ex quis reiciendis dolorum dignissimos qui ipsam libero
-          quas veritatis enim ducimus, ipsa soluta. Delectus quaerat minima
-          doloribus inventore corporis, distinctio nulla architecto perferendis
-          nisi asperiores quas, saepe quam ut laudantium.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-          earum neque totam consequuntur accusantium corporis eaque? Nam eaque
-          assumenda, ex quis reiciendis dolorum dignissimos qui ipsam libero
-          quas veritatis enim ducimus, ipsa soluta. Delectus quaerat minima
-          doloribus inventore corporis, distinctio nulla architecto perferendis
-          nisi asperiores quas, saepe quam ut laudantium.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-          earum neque totam consequuntur accusantium corporis eaque? Nam eaque
-          assumenda, ex quis reiciendis dolorum dignissimos qui ipsam libero
-          quas veritatis enim ducimus, ipsa soluta. Delectus quaerat minima
-          doloribus inventore corporis, distinctio nulla architecto perferendis
-          nisi asperiores quas, saepe quam ut laudantium.
-        </p>
+        
       </section>
       <Footer />
     </div>
