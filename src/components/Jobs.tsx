@@ -1,49 +1,58 @@
-import "../styles/Jobs.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Footer from "./Footer";
 import Header from "./Header";
 
-function Jobs() {
+interface Job {
+  _id: string;
+  title: string;
+  description: string;
+  postedBy: string;
+}
+
+const Jobs: React.FC = () => {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const port = import.meta.env.VITE_REACT_APP_PORT || 4200;
+  const token = localStorage.getItem("token");
+
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get(`http://localhost:${port}/jobs/jobs`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (Array.isArray(response.data)) {
+        setJobs(response.data);
+      } else {
+        console.error("Error: Expected array for jobs");
+        setJobs([]); // Set empty array to avoid issues
+      }
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+      setJobs([]); // Set empty array to avoid issues
+    }
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
   return (
     <div>
       <Header />
       <section className="jobs-container">
         <h1>Jobs</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-          earum neque totam consequuntur accusantium corporis eaque? Nam eaque
-          assumenda, ex quis reiciendis dolorum dignissimos qui ipsam libero
-          quas veritatis enim ducimus, ipsa soluta. Delectus quaerat minima
-          doloribus inventore corporis, distinctio nulla architecto perferendis
-          nisi asperiores quas, saepe quam ut laudantium.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-          earum neque totam consequuntur accusantium corporis eaque? Nam eaque
-          assumenda, ex quis reiciendis dolorum dignissimos qui ipsam libero
-          quas veritatis enim ducimus, ipsa soluta. Delectus quaerat minima
-          doloribus inventore corporis, distinctio nulla architecto perferendis
-          nisi asperiores quas, saepe quam ut laudantium.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-          earum neque totam consequuntur accusantium corporis eaque? Nam eaque
-          assumenda, ex quis reiciendis dolorum dignissimos qui ipsam libero
-          quas veritatis enim ducimus, ipsa soluta. Delectus quaerat minima
-          doloribus inventore corporis, distinctio nulla architecto perferendis
-          nisi asperiores quas, saepe quam ut laudantium.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-          earum neque totam consequuntur accusantium corporis eaque? Nam eaque
-          assumenda, ex quis reiciendis dolorum dignissimos qui ipsam libero
-          quas veritatis enim ducimus, ipsa soluta. Delectus quaerat minima
-          doloribus inventore corporis, distinctio nulla architecto perferendis
-          nisi asperiores quas, saepe quam ut laudantium.
-        </p>
+        <ul>
+          {jobs.map((job) => (
+            <li key={job._id}>
+              <h2>{job.title}</h2>
+              <p>{job.description}</p>
+            </li>
+          ))}
+        </ul>
       </section>
       <Footer />
     </div>
   );
-}
+};
 
 export default Jobs;
