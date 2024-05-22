@@ -4,6 +4,11 @@
   justify-content: space-between;
   margin-top: 20px;
 }
+.header-logo {
+  height: 70px;
+  margin-left: 20px;
+  border-radius: 5px;
+}
 
 .header-logo img {
   height: 70px;
