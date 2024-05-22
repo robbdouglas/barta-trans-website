@@ -15,6 +15,7 @@ function Contact() {
         <p>+49 159 01227139 / Sandor Barta /</p>
         <p>BartaTrans@gmx.net</p>
       </section>
+      
       <Footer />
     </div>
   );
