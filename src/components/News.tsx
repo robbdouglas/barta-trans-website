@@ -17,7 +17,7 @@ const News: React.FC = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get(`http://localhost:${port}/news/news`, {
+      const response = await axios.get(`${port}/news/news`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (Array.isArray(response.data)) {
@@ -56,4 +56,3 @@ const News: React.FC = () => {
 };
 
 export default News;
-

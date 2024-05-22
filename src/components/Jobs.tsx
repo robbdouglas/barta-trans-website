@@ -17,7 +17,7 @@ const Jobs: React.FC = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get(`http://localhost:${port}/jobs/jobs`, {
+      const response = await axios.get(`${port}/jobs/jobs`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (Array.isArray(response.data)) {

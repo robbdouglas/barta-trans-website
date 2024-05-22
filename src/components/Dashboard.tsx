@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get(`http://localhost:${port}/jobs/jobs`, {
+      const response = await axios.get(`${port}/jobs/jobs`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (Array.isArray(response.data)) {
@@ -98,7 +98,7 @@ const Dashboard: React.FC = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get(`http://localhost:${port}/news/news`, {
+      const response = await axios.get(`${port}/news/news`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (Array.isArray(response.data)) {
@@ -115,7 +115,7 @@ const Dashboard: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`http://localhost:${port}/users/users`, {
+      const response = await axios.get(`${port}/users/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(response.data);
@@ -127,7 +127,7 @@ const Dashboard: React.FC = () => {
   const addJob = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:${port}/jobs/jobs`,
+        `${port}/jobs/jobs`,
         {
           title: jobTitle,
           description: jobDescription,
@@ -152,7 +152,7 @@ const Dashboard: React.FC = () => {
   const addNews = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:${port}/news/news`,
+        `${port}/news/news`,
         {
           title: newsTitle,
           content: newsContent,
@@ -176,7 +176,7 @@ const Dashboard: React.FC = () => {
 
   const deleteJob = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:${port}/jobs/jobs/${id}`, {
+      await axios.delete(`${port}/jobs/jobs/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setJobs((prevJobs) => prevJobs.filter((job) => job._id !== id));
@@ -187,7 +187,7 @@ const Dashboard: React.FC = () => {
 
   const deleteNews = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:${port}/news/news/${id}`, {
+      await axios.delete(`${port}/news/news/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNews((prevNews) => prevNews.filter((newsItem) => newsItem._id !== id));
@@ -201,7 +201,7 @@ const Dashboard: React.FC = () => {
     if (userRole === "superuser") {
       try {
         await axios.post(
-          `http://localhost:${port}/users/users`,
+          `${port}/users/users`,
           {
             username: newUsername,
             password: newPassword,
@@ -229,7 +229,7 @@ const Dashboard: React.FC = () => {
     if (userRole === "superuser" && editUserId) {
       try {
         await axios.put(
-          `http://localhost:${port}/users/users/${editUserId}`,
+          `${port}/users/users/${editUserId}`,
           {
             username: editUsername,
             password: editPassword,
@@ -256,7 +256,7 @@ const Dashboard: React.FC = () => {
 
   const handleDeleteUser = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:${port}/users/users/${id}`, {
+      await axios.delete(`${port}/users/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
