@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Importiere useNavigate
+import Header from "./Header";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -36,6 +37,7 @@ const Login: React.FC = () => {
 
   return (
     <div>
+      <Header />
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
