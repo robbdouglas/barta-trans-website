@@ -9,20 +9,17 @@ const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // Erstelle eine Instanz von useNavigate
 
-  // const port = import.meta.env.VITE_REACT_APP_PORT;
+  const port = import.meta.env.VITE_REACT_APP_PORT;
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post(
-        `https://barta-trans-server.onrender.com/users/login`,
-        {
-          username,
-          password,
-        }
-      );
+      const response = await axios.post(`${port}/users/login`, {
+        username,
+        password,
+      });
       localStorage.setItem("token", response.data.token); // Stelle sicher, dass der Token-Name hier und in deiner ProtectedRoute übereinstimmt
       localStorage.setItem("role", response.data.role);
       alert("Login successful!");
