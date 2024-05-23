@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Importiere useNavigate
+import Header from "./Header";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -16,13 +17,10 @@ const Login: React.FC = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post(
-        `http://localhost:${port}/users/login`,
-        {
-          username,
-          password,
-        }
-      );
+      const response = await axios.post(`${port}/users/login`, {
+        username,
+        password,
+      });
       localStorage.setItem("token", response.data.token); // Stelle sicher, dass der Token-Name hier und in deiner ProtectedRoute übereinstimmt
       localStorage.setItem("role", response.data.role);
       alert("Login successful!");
@@ -39,6 +37,7 @@ const Login: React.FC = () => {
 
   return (
     <div>
+      <Header />
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>

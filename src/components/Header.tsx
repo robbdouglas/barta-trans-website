@@ -31,7 +31,7 @@ function Header() {
     <div>
       <div className={`header-container ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="header-logo">
-          <img src="../images/logo-complete.png" alt="logo" />
+          <img src="../assets/logo-complete.png" alt="logo" />
         </div>
         <div className="burger-menu" onClick={toggleMenu}>
           <i className="fa-solid fa-bars"></i>
