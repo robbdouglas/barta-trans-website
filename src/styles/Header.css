@@ -1,5 +1,5 @@
 .header-container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,26 +93,24 @@ a {
 /* Responsive Styles */
 @media (min-width: 768px) {
   .header-container {
-    width: 100vw;
+    /* margin-top: 20px; */
+    width: 90vw;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
   }
   .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* align-items: center; */
-    /* width: 100%; */
-    margin-right: 20px;
+    align-items: center;
+
+    /* margin-right: 20px; */
   }
   .navbar ul {
     display: flex;
     flex-direction: row;
-    text-align: left;
-    width: 100%;
-    margin-right: 30px;
+
+    margin-right: 10%;
   }
   .navbar li {
     margin: 0 10px;
