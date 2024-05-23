@@ -92,8 +92,30 @@ a {
 
 /* Responsive Styles */
 @media (min-width: 768px) {
+  .header-container {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
   .navbar {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* width: 100%; */
+    margin-right: 20px;
+  }
+  .navbar ul {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    width: 100%;
+    margin-right: 30px;
+  }
+  .navbar li {
+    margin: 0 10px;
   }
   .burger-menu {
     display: none;

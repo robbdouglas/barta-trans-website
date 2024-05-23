@@ -57,6 +57,11 @@ function Header() {
               <Link to="/login">Admin Login</Link>
             </li>
           </ul>
+          <div className="languages-container">
+            <button className="german-btn">DE</button>
+            <button className="german-btn">EN</button>
+            <button className="german-btn">SLO</button>
+          </div>
         </nav>
         <div className="burger-menu" onClick={toggleMenu}>
           <i className="fa-solid fa-bars"></i>
