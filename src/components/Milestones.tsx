@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback, forwardRef } from "react";
 import styled from "styled-components";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
@@ -38,6 +38,13 @@ const MilestonesContainer = styled.div`
   .vertical-timeline-element-title {
     color: #ffd700; /* Color for the milestone titles */
   }
+
+  .vertical-timeline-element {
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 `;
 
 const Title = styled.h1`
@@ -51,8 +58,26 @@ const Description = styled.p`
   margin: 1.5em 0 2em 0;
 `;
 
+interface VerticalTimelineElementProps {
+  key: number;
+  date: string;
+  dateClassName: string;
+  iconStyle: React.CSSProperties;
+  children: React.ReactNode;
+}
+
+const VerticalTimelineElementWithRef = forwardRef<HTMLDivElement, VerticalTimelineElementProps>((props, ref) => (
+  <VerticalTimelineElement innerRef={ref} {...props} />
+));
+
 const Milestones: React.FC = () => {
-  const timelineElementsRef = useRef<HTMLDivElement[]>([]);
+  const timelineElementsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  const setRef = useCallback((el: HTMLDivElement | null, index: number) => {
+    if (el) {
+      timelineElementsRef.current[index] = el;
+    }
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -68,22 +93,18 @@ const Milestones: React.FC = () => {
       }
     );
 
-    if (timelineElementsRef.current) {
-      timelineElementsRef.current.forEach((element) => {
-        if (element) {
-          observer.observe(element);
-        }
-      });
-    }
+    timelineElementsRef.current.forEach((element) => {
+      if (element) {
+        observer.observe(element);
+      }
+    });
 
     return () => {
-      if (timelineElementsRef.current) {
-        timelineElementsRef.current.forEach((element) => {
-          if (element) {
-            observer.unobserve(element);
-          }
-        });
-      }
+      timelineElementsRef.current.forEach((element) => {
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
     };
   }, []);
 
@@ -92,20 +113,20 @@ const Milestones: React.FC = () => {
       <Title>Timeline of Barta Trans s.r.o.</Title>
       <VerticalTimeline>
         {milestones.map((milestone, index) => (
-          <VerticalTimelineElement
+          <VerticalTimelineElementWithRef
             key={milestone.key}
             date={milestone.date}
             dateClassName="vertical-timeline-element-date"
             iconStyle={workIconStyles}
-            ref={(el: HTMLDivElement) => (timelineElementsRef.current[index] = el)}
+            ref={(el: HTMLDivElement | null) => setRef(el, index)}
           >
             <h3 className="vertical-timeline-element-title">{milestone.title}</h3>
             <Description>{milestone.description}</Description>
-          </VerticalTimelineElement>
+          </VerticalTimelineElementWithRef>
         ))}
       </VerticalTimeline>
     </MilestonesContainer>
   );
 };
 
-export default Milestones;
+export default React.memo(Milestones);
