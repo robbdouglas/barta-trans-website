@@ -2,8 +2,10 @@
   width: 100vw;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 20px;
 }
+
 .header-logo {
   height: 70px;
   margin-left: 20px;
@@ -16,7 +18,11 @@
   border-radius: 5px;
 }
 
-.fa-bars,
+.navbar {
+  display: none;
+}
+
+.burger-menu,
 .close-menu-btn {
   font-size: 30px;
   margin: 20px;
@@ -82,4 +88,17 @@ a {
 
 .admin-login-container {
   margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+  }
+  .burger-menu {
+    display: none;
+  }
+  .menu {
+    display: none;
+  }
 }

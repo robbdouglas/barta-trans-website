@@ -33,6 +33,31 @@ function Header() {
         <div className="header-logo">
           <img src="../assets/logo-complete.png" alt="logo" />
         </div>
+        <nav className="navbar">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/news">News</Link>
+            </li>
+            <li>
+              <Link to="/services">Services</Link>
+            </li>
+            <li>
+              <Link to="/jobs">Jobs</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/login">Admin Login</Link>
+            </li>
+          </ul>
+        </nav>
         <div className="burger-menu" onClick={toggleMenu}>
           <i className="fa-solid fa-bars"></i>
         </div>
@@ -63,7 +88,6 @@ function Header() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
-
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
