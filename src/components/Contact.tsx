@@ -13,7 +13,7 @@ function Contact() {
         <p>SK - 943 61 Male Kosihy</p>
         <p>+43 660 8636120 / Levente Barta /</p>
         <p>+49 159 01227139 / Sandor Barta /</p>
-        <p>BartaTrans@gmx.net</p>
+        <p>bartaTtrans@gmx.net</p>
       </section>
       
       <Footer />
