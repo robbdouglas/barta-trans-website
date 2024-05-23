@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../styles/Welcome.css';
 import Footer from './Footer';
