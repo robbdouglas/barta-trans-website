@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo-complete.png"; // Importiere das Bild direkt
+
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +33,7 @@ function Header() {
     <div>
       <div className={`header-container ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="header-logo">
-          <img src="../assets/logo-complete.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </div>
         <nav className="navbar">
           <ul>
