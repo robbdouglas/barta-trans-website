@@ -1,33 +1,32 @@
-import Footer from "./Footer";
-import Header from "./Header";
+import { useTranslation } from 'react-i18next';
+import Footer from './Footer';
+import Header from './Header';
+// import '../styles/Impressum.css';
 
 function Impressum() {
+  const { t } = useTranslation();
+
   return (
     <div className="impressum-container">
       <Header />
-      <h1>Impressum</h1>
-      <p><strong>Angaben gemäß § 5 TMG:</strong></p>
-      <p>Barta Trans s.r.o.<br />
-         Male Kosihy 2<br />
-         SK - 943 61 Male Kosihy</p>
+      <h1>{t('impressum.title')}</h1>
+      <p><strong>{t('impressum.info')}</strong></p>
+      <p>{t('impressum.company')}</p>
       
-      <p><strong>Vertreten durch:</strong><br />
-         Levente Barta<br />
-         Sandor Barta</p>
+      <p><strong>{t('impressum.representedBy')}</strong></p>
+      <p>{t('impressum.representatives')}</p>
       
-      <p><strong>Kontakt:</strong><br />
-         Telefon: +43 660 8636120 (Levente Barta)<br />
-         Telefon: +49 159 01227139 (Sandor Barta)<br />
-         E-Mail: BartaTrans@gmx.net</p>
+      <p><strong>{t('impressum.contact')}</strong></p>
+      <p>{t('impressum.phone1')}</p>
+      <p>{t('impressum.phone2')}</p>
+      <p>{t('impressum.email')}</p>
       
-      <p><strong>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:</strong><br />
-         [Hier Ihre Umsatzsteuer-Identifikationsnummer eintragen, falls vorhanden]</p>
+      <p><strong>{t('impressum.vatNumber')}</strong></p>
+      <p>{t('impressum.vat')}</p>
       
-      <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br />
-         Levente Barta<br />
-         Male Kosihy 2<br />
-         SK - 943 61 Male Kosihy</p>
-         <Footer />
+      <p><strong>{t('impressum.responsible')}</strong></p>
+      <p>{t('impressum.responsiblePerson')}</p>
+      <Footer />
     </div>
   );
 }
