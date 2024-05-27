@@ -8,7 +8,7 @@ function Welcome() {
       <Header />
       <div className="small-welcome-container">
         <section className="welcome-text">
-          <small className="static-text">Welcome to</small>
+          <small className="static-text">Explore</small>
           <p className="barta">BARTA</p>
           <p className="trans">TRANS</p>
         </section>
@@ -19,3 +19,4 @@ function Welcome() {
 }
 
 export default Welcome;
+ 

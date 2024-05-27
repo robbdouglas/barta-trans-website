@@ -41,6 +41,7 @@
   background: linear-gradient(180deg, rgb(51, 123, 200), rgb(23, 40, 106));
   transition: transform 0.3s ease-in-out; /* Übergangseffekt */
   transform: translateX(100%); /* Menü außerhalb des Sichtbereichs */
+  z-index: 99;
 }
 
 .header-container.menu-open .menu {
