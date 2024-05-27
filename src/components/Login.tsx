@@ -29,7 +29,7 @@ const Login: React.FC = () => {
       });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
-      toast.success("Login successful!", {
+      toast.success("Login successful! You will now be redirected to the dashboard.", {
         position: "bottom-center",
         autoClose: 3000,
         hideProgressBar: true,
