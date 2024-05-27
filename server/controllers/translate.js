@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { DEEPL_API_KEY } = require("./dotenvconfig");
+const { DEEPL_API_KEY } = require("../dotenvconfig");
 
 
 const translateText = async (text, targetLang) => {
