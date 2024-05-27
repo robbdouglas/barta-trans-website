@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "./Footer";
 import Header from "./Header";
+import { useTranslation } from "react-i18next";
 
 interface News {
   _id: string;
@@ -14,11 +15,13 @@ const News: React.FC = () => {
   const [news, setNews] = useState<News[]>([]);
   const port = import.meta.env.VITE_REACT_APP_PORT || 4200;
   const token = localStorage.getItem("token");
+  const { i18n } = useTranslation();
 
   const fetchNews = async () => {
     try {
       const response = await axios.get(`${port}/news/news`, {
         headers: { Authorization: `Bearer ${token}` },
+        params: { lang: i18n.language } // Sprache an die Backend-Anfrage anhängen
       });
       if (Array.isArray(response.data)) {
         setNews(response.data);
@@ -34,7 +37,7 @@ const News: React.FC = () => {
 
   useEffect(() => {
     fetchNews();
-  }, []);
+  }, [i18n.language]); // Fetch news again when language changes
 
   return (
     <div>
