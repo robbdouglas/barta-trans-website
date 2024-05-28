@@ -44,7 +44,6 @@ const Login: React.FC = () => {
     } catch (err: any) {  // Typisieren des Fehlers als 'any'
       if (err.response) {
         // Server hat mit einem Statuscode geantwortet, der außerhalb des Bereichs von 2xx liegt
-        setError("Login failed. Please check your username and password.");
         toast.error("Login failed. Please check your username and password.", {
           position: "bottom-center",
           autoClose: 3000,
@@ -56,7 +55,6 @@ const Login: React.FC = () => {
         });
       } else if (err.request) {
         // Anfrage wurde gemacht, aber keine Antwort erhalten
-        setError("Server is not responding. Please try again later.");
         toast.error("Server is not responding. Please try again later.", {
           position: "bottom-center",
           autoClose: 3000,
@@ -68,7 +66,6 @@ const Login: React.FC = () => {
         });
       } else {
         // Etwas ist beim Erstellen der Anfrage schief gelaufen
-        setError("An error occurred. Please try again.");
         toast.error("An error occurred. Please try again.", {
           position: "bottom-center",
           autoClose: 3000,
