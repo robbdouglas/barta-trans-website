@@ -6,6 +6,8 @@
   background: linear-gradient(180deg, rgb(86, 202, 228), rgb(23, 40, 106));
   color: white;
   height: 10vh;
+  position: absolut;
+  bottom: 0;
 }
 
 .copyright {
