@@ -1,4 +1,5 @@
 const Job = require("../models/Job");
+const translateText = require("./translate");
 
 exports.createJob = async (req, res) => {
   console.log("Creating job with data:", req.body);
@@ -18,7 +19,20 @@ exports.getJobs = async (req, res) => {
   try {
     const jobs = await Job.find().populate("postedBy");
     console.log("Jobs fetched successfully:", jobs);
-    res.status(200).send(jobs);
+
+    const targetLang = req.query.lang || 'EN'; // Standardmäßig Englisch, kann durch eine Abfragezeichenkette überschrieben werden
+
+    const translatedJobs = await Promise.all(jobs.map(async (job) => {
+      const translatedTitle = await translateText(job.title, targetLang);
+      const translatedDescription = await translateText(job.description, targetLang);
+      return {
+        ...job._doc,
+        title: translatedTitle,
+        description: translatedDescription,
+      };
+    }));
+
+    res.status(200).send(translatedJobs);
   } catch (error) {
     console.error("Error fetching jobs:", error);
     res.status(500).send(error);

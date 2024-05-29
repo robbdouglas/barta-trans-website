@@ -1,0 +1,86 @@
+{
+    "contact": {
+      "title": "Kontakt",
+      "company": "Barta Trans s.r.o.",
+      "address1": "Malé Kosihy 2",
+      "address2": "SK - 943 61 Malé Kosihy",
+      "phone1": "+43 660 8636120 / Levente Barta /",
+      "phone2": "+49 159 01227139 / Sandor Barta /",
+      "email": "bartatrans@gmx.net"
+    },
+    "navbar": {
+      "home": "Domov",
+      "news": "Novinky",
+      "services": "Služby",
+      "jobs": "Práca",
+      "contact": "Kontakt",
+      "dashboard": "Panel",
+      "login": "Admin Prihlásenie"
+    },
+    "impressum": {
+      "title": "Tiráž",
+      "info": "Informácie podľa § 5 TMG:",
+      "company": "Barta Trans s.r.o., Malé Kosihy 2, SK - 943 61 Malé Kosihy",
+      "representedBy": "Zastúpené:",
+      "representatives": "Levente Barta, Sandor Barta",
+      "contact": "Kontakt:",
+      "phone1": "Telefón: +43 660 8636120 (Levente Barta)",
+      "phone2": "Telefón: +49 159 01227139 (Sandor Barta)",
+      "email": "Email: bartatrans@gmx.net",
+      "vatNumber": "DIČ podľa § 27 a zákona o DPH:",
+      "vat": "[Zadajte svoje DIČ, ak je relevantné]",
+      "responsible": "Zodpovedný za obsah podľa § 55 Abs. 2 RStV:",
+      "responsiblePerson": "Levente Barta, Malé Kosihy 2, SK - 943 61 Malé Kosihy"
+    },
+    "milestones": {
+      "title": "Časová os Barta Trans s.r.o.",
+      "1": { "date": "September 2021", "title": "Založenie", "description": "Barta Trans s.r.o. je založená." },
+      "2": { "date": "2021-2022", "title": "Budovanie tímu", "description": "Krátko po založení: Vybudovaný spoľahlivý a skúsený tím." },
+      "3": { "date": "2022", "title": "Domáca preprava", "description": "Zriadenie rozsiahlej siete pre domácu prepravu." },
+      "4": { "date": "2023", "title": "Medzinárodná preprava", "description": "Zahájenie medzinárodných prepravných služieb." },
+      "5": { "date": "2023", "title": "Vodná a letecká preprava", "description": "Zriadené partnerstvá na poskytovanie vodných a leteckých prepravných riešení." },
+      "6": { "date": "Plány do budúcnosti", "title": "Skladovacie služby", "description": "Plánuje sa vývoj moderných a efektívnych skladovacích infraštruktúr." },
+      "7": { "date": "Vízia", "title": "Vízia", "description": "Snaha stať sa priekopníkom v prepravnom a logistickom priemysle." }
+    },
+    "services": {
+      "title": "Naše služby",
+      "domesticTransport": {
+        "title": "Domáca preprava",
+        "description": "Naša spoločnosť má rozsiahlu sieť na domácom trhu a ponúka flexibilné riešenia pre domáce prepravné potreby. Či už ide o menšie alebo väčšie nákladné objemy, s našou spoľahlivou flotilou a skúsenými vodičmi zaručujeme efektívnu a včasnú prepravu."
+      },
+      "internationalTransport": {
+        "title": "Medzinárodná preprava",
+        "description": "Pre našich zákazníkov, ktorí sa chcú expandovať na globálny trh, ponúkame aj medzinárodné prepravné služby. S pomocou našich skúsených logistických odborníkov organizujeme efektívnu a bezpečnú prepravu v rámci Európy aj mimo nej."
+      },
+      "seaAirFreight": {
+        "title": "Námorná a letecká preprava",
+        "description": "Prostredníctvom našich partnerov ponúka naša spoločnosť aj možnosti námornej a leteckej prepravy. Keď projekt alebo typ tovaru vyžaduje námornú alebo leteckú prepravu, zorganizujeme a vykonáme prepravu čo najlepším spôsobom."
+      },
+      "futurePlans": {
+        "title": "Plány do budúcnosti – Skladovacie služby",
+        "description": "Barta Trans neustále vyvíja svoje služby, aby ponúkala našim zákazníkom komplexnejšie riešenia. To zahŕňa zriadenie a poskytovanie skladovacích služieb v našich budúcich plánoch. Hoci ešte nemáme vlastný sklad, naším cieľom je v blízkej budúcnosti vyvinúť modernú a efektívnu skladovaciu infraštruktúru. To nám umožní ponúknuť našim zákazníkom správne skladovacie riešenia pre ich potreby, či už na krátkodobé alebo dlhodobé skladovanie, príjem a výdaj tovaru alebo iné skladovacie služby. Zavedenie našich skladovacích služieb vytvorí ďalšie príležitosti pre našich zákazníkov na efektívne riadenie a presun ich tovaru, optimalizáciu ich logistických procesov. Ďakujeme za vašu trpezlivosť a dôveru a tešíme sa na budúcu spoluprácu!"
+      },
+      "vehicleFleet": {
+        "title": "Flotila vozidiel",
+        "description": "Všetky naše vozidlá sú moderné a pravidelne udržiavané, aby zabezpečili spoľahlivú a efektívnu prepravu. Naši vodiči sú skúsení a vysoko kvalifikovaní na poskytovanie najvyšších štandardov služieb našim zákazníkom. Barta Trans hrdí ponúka svojim zákazníkom najmodernejšie a najspoľahlivejšie prepravné riešenia, vrátane návesov s posuvnou podlahou a plachtových prívesov. Tieto vozidlá nám umožňujú uspokojiť širokú škálu prepravných potrieb, či už ide o veľké objemy, veľké predmety alebo krehký tovar."
+      },
+      "ftlFleet": {
+        "title": "FTL flotila",
+        "walkingFloor": {
+          "title": "Posuvná podlaha",
+          "description": "Poskytuje príležitosti na prepravu poľnohospodárskych produktov, paletovaného tovaru, piesku/blata/zeminy, vápenca/industriálnej soli, produktov lesného/papierenského priemyslu, odpadu (nebezpečného, drveného materiálu a granulátov)."
+        },
+        "curtainSided": {
+          "title": "Plachtové prívesy",
+          "description": "Štandard, Mega."
+        }
+      }
+    },
+    "welcome": {
+      "title": "Vitajte v Barta Trans s.r.o.",
+      "description": "Barta Trans je dynamická a rastúca prepravná spoločnosť založená v septembri 2021. Naša spoločnosť sa venuje poskytovaniu vysokokvalitných prepravných a logistických služieb našim klientom. Krátko po našom založení sa nám podarilo vybudovať spoľahlivý a skúsený tím, ktorý je oddaný plneniu potrieb zákazníkov a poskytovaniu vysokokvalitných služieb. Naším cieľom je ponúkať flexibilné a efektívne riešenia pre našich zákazníkov, či už v národnej alebo medzinárodnej preprave, ako aj v logistických úlohách. Riešime ako malé, tak aj veľké objemy nákladu a snažíme sa splniť každú prepravnú úlohu na vysokej úrovni. Ďakujeme za návštevu našej webovej stránky a dúfame, že sa čoskoro stanete našimi zákazníkmi!",
+      "visionTitle": "Vízia: Barta Trans – Revolúcia inovácie a kvality",
+      "visionDescription": "Naším cieľom je, aby Barta Trans nebola len prepravná spoločnosť, ale priekopník v revolúcii inovácie a kvality v prepravnom a logistickom sektore. Naša vízia je definovať štandardy v odvetví a povzniesť služby na novú úroveň vytvorením kultúry excelentnosti a orientácie na zákazníka. Aby sme dosiahli túto víziu, budeme neustále rozvíjať našu technologickú infraštruktúru, aby sme využívali najnovšie inovácie a digitálne riešenia. Paralelne budeme pracovať na posilnení nášho tímu najlepšími odborníkmi, ktorí sú oddaní poskytovaniu vysokokvalitných služieb a spokojnosti zákazníkov. Verne našej vízii sa budeme vždy sústrediť na potreby a očakávania našich zákazníkov a prispôsobiť všetky naše aktivity tak, aby sme maximalizovali spokojnosť zákazníkov. To urobí z Barta Trans popredného hráča v odvetví, uznávaného za spoľahlivosť, inovácie a excelentnosť."
+    }
+  }
+  

@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled, { keyframes } from "styled-components";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
+
 interface Job {
   _id: string;
   title: string;
   description: string;
-  postedBy: string; // Adjust this type as needed
+  postedBy: string;
 }
 
 interface News {
   _id: string;
   title: string;
   content: string;
-  author: string; // Adjust this type as needed
+  author: string;
 }
 
 interface User {
@@ -28,6 +30,7 @@ const Dashboard: React.FC = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [news, setNews] = useState<News[]>([]);
   const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [jobTitle, setJobTitle] = useState<string>("");
   const [jobDescription, setJobDescription] = useState<string>("");
   const [newsTitle, setNewsTitle] = useState<string>("");
@@ -61,7 +64,6 @@ const Dashboard: React.FC = () => {
     } else {
       console.log("No token or role found in localStorage");
     }
-    // fetchData(); // Not needed here
   }, []);
 
   useEffect(() => {
@@ -72,11 +74,13 @@ const Dashboard: React.FC = () => {
   }, [token, userRole]);
 
   const fetchData = async () => {
+    setLoading(true);
     await fetchJobs();
     await fetchNews();
     if (userRole === "superuser") {
       await fetchUsers();
     }
+    setLoading(false);
   };
 
   const fetchJobs = async () => {
@@ -88,11 +92,11 @@ const Dashboard: React.FC = () => {
         setJobs(response.data);
       } else {
         console.error("Error: Expected array for jobs");
-        setJobs([]); // Set empty array to avoid issues
+        setJobs([]);
       }
     } catch (error) {
       console.error("Error fetching jobs:", error);
-      setJobs([]); // Set empty array to avoid issues
+      setJobs([]);
     }
   };
 
@@ -105,11 +109,11 @@ const Dashboard: React.FC = () => {
         setNews(response.data);
       } else {
         console.error("Error: Expected array for news");
-        setNews([]); // Set empty array to avoid issues
+        setNews([]);
       }
     } catch (error) {
       console.error("Error fetching news:", error);
-      setNews([]); // Set empty array to avoid issues
+      setNews([]);
     }
   };
 
@@ -268,12 +272,17 @@ const Dashboard: React.FC = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
     <div>
       <Header />
+      {loading && (
+        <SpinnerOverlay>
+          <Spinner />
+        </SpinnerOverlay>
+      )}
       <h1>Dashboard</h1>
       <h2>Jobs</h2>
       <ul>
@@ -424,5 +433,32 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+
+const spin = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
+
+const SpinnerOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 9999;
+`;
+
+const Spinner = styled.div`
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: ${spin} 1s linear infinite;
+`;
 
 export default Dashboard;

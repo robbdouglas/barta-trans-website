@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback, forwardRef } from "react";
 import styled from "styled-components";
+import { useTranslation } from 'react-i18next';
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
@@ -13,30 +14,30 @@ const milestones = [
   { key: 7, date: "Vision", title: "Vision", description: "Striving to become a pioneer in the transport and logistics industry.", icon: "work" }
 ];
 
-const workIconStyles = { background: "#06D6A0" }; // Icon background color
+const workIconStyles = { background: "#06D6A0" };
 
 const MilestonesContainer = styled.div`
   width: 100%;
-  background-color: #000; // Background color of the timeline container
-  color: #32cd32; // Default text color
+  background-color: #000;
+  color: #32cd32;
   padding: 20px;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
 
   .vertical-timeline-element-content {
-    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25), 0 0.4em 1.25em 0 rgba(0, 0, 0, 0.15); // Shadow for timeline elements
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25), 0 0.4em 1.25em 0 rgba(0, 0, 0, 0.15);
   }
 
   .vertical-timeline-element-date {
     display: block !important;
     float: none !important;
-    color: #ff6347; /* Color for the dates */
+    color: #ff6347;
     margin-top: 1.5em;
   }
 
   .vertical-timeline-element-title {
-    color: #ffd700; /* Color for the milestone titles */
+    color: #ffd700;
   }
 
   .vertical-timeline-element {
@@ -51,7 +52,7 @@ const Title = styled.h1`
   font-size: 3em;
   text-align: center;
   font-family: "Bebas Neue", sans-serif;
-  color: #32CD32; // Color for the main title
+  color: #32CD32;
 `;
 
 const Description = styled.p`
@@ -71,6 +72,7 @@ const VerticalTimelineElementWithRef = forwardRef<HTMLDivElement, VerticalTimeli
 ));
 
 const Milestones: React.FC = () => {
+  const { t } = useTranslation();
   const timelineElementsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const setRef = useCallback((el: HTMLDivElement | null, index: number) => {
@@ -110,18 +112,18 @@ const Milestones: React.FC = () => {
 
   return (
     <MilestonesContainer>
-      <Title>Timeline of Barta Trans s.r.o.</Title>
+      <Title>{t('milestones.title')}</Title>
       <VerticalTimeline>
         {milestones.map((milestone, index) => (
           <VerticalTimelineElementWithRef
             key={milestone.key}
-            date={milestone.date}
+            date={t(`milestones.${milestone.key}.date`)}
             dateClassName="vertical-timeline-element-date"
             iconStyle={workIconStyles}
             ref={(el: HTMLDivElement | null) => setRef(el, index)}
           >
-            <h3 className="vertical-timeline-element-title">{milestone.title}</h3>
-            <Description>{milestone.description}</Description>
+            <h3 className="vertical-timeline-element-title">{t(`milestones.${milestone.key}.title`)}</h3>
+            <Description>{t(`milestones.${milestone.key}.description`)}</Description>
           </VerticalTimelineElementWithRef>
         ))}
       </VerticalTimeline>

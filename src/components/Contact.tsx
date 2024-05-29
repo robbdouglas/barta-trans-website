@@ -1,20 +1,23 @@
-import "../styles/Contact.css";
-import Footer from "./Footer";
-import Header from "./Header";
-import React from "react";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import '../styles/Contact.css';
+import Footer from './Footer';
+import Header from './Header';
 
 const Contact: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <Header />
       <section className="contact-container">
-        <h1>Contact</h1>
-        <p>Barta Trans s.r.o.</p>
-        <p>Male Kosihy 2</p>
-        <p>SK - 943 61 Male Kosihy</p>
-        <p>+43 660 8636120 / Levente Barta /</p>
-        <p>+49 159 01227139 / Sandor Barta /</p>
-        <p>bartatrans@gmx.net</p>
+        <h1>{t('contact.title')}</h1>
+        <p>{t('contact.company')}</p>
+        <p>{t('contact.address1')}</p>
+        <p>{t('contact.address2')}</p>
+        <p>{t('contact.phone1')}</p>
+        <p>{t('contact.phone2')}</p>
+        <p>{t('contact.email')}</p>
         
         <div className="map-container">
           <iframe
