@@ -1,18 +1,18 @@
 .footer-container {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(180deg, rgb(86, 202, 228), rgb(23, 40, 106));
-    color: white;
-    height: 100px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgb(86, 202, 228), rgb(23, 40, 106));
+  color: white;
+  height: 10vh;
 }
 
 .copyright {
-    margin: 0 30px;
+  margin: 0 30px;
 }
 
 .social-media-icons i {
-    margin: 0 4px;
-    font-size: 1.2em;
+  margin: 0 4px;
+  font-size: 1.2em;
 }
