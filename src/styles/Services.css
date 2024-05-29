@@ -3,8 +3,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .services-container p {
-  margin: 10px;
+  margin: 20px;
 }
