@@ -13,8 +13,7 @@ function Footer() {
         <i className="fa-regular fa-copyright"></i> 2024 Barta Trans s.r.o.
       </p>
       <div className="impressum-and-more">
-      <Link to="/impressum">Impressum</Link>
-
+        <Link to="/impressum">Impressum </Link>
       </div>
     </div>
   );
