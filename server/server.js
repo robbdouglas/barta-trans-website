@@ -41,9 +41,10 @@ app.use(
     saveUninitialized: false,
     resave: false,
     cookie: {
-      secure: true,
-      httpOnly: true,
-      maxAge: 3600000,
+      secure: true, // Ensure the cookie is only sent over HTTPS
+      httpOnly: true, // Ensure the cookie is only accessible via HTTP(S), not client JavaScript
+      sameSite: "None", // Allows cross-site cookie usage
+      maxAge: 3600000, // Set cookie expiration time
     },
   })
 );
