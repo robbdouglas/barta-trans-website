@@ -38,28 +38,19 @@
   top: 0;
   right: 0;
   width: 50%;
-  height: 50%;
+  height: 100vh;
   background: linear-gradient(180deg, rgb(51, 123, 200), rgb(23, 40, 106));
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(100%);
+  /* transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; */
   z-index: 99;
-  display: none;
+  visibility: hidden; /* visibility hidden to ensure it's not interactive */
 }
 
 .header-container.menu-open .menu {
   transform: translateX(0);
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50vw;
-  height: 100vh;
-  background: linear-gradient(180deg, rgb(51, 123, 200), rgb(23, 40, 106));
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(0);
-  z-index: 99;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  opacity: 1;
+  visibility: visible;
 }
 
 .menu-header {

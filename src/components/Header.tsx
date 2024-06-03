@@ -80,59 +80,61 @@ function Header() {
       <div className="burger-menu" onClick={toggleMenu}>
         <i className="fa-solid fa-bars"></i>
       </div>
-      <div className="menu" ref={menuRef}>
-        <div className="menu-header">
-          <button className="close-menu-btn" onClick={closeMenu}>
-            X
-          </button>
-          <div className="languages-container">
-            <button
-              className="language-btn"
-              onClick={() => changeLanguage("de")}
-            >
-              DE
+      {isMenuOpen && (
+        <div className="menu" ref={menuRef}>
+          <div className="menu-header">
+            <button className="close-menu-btn" onClick={closeMenu}>
+              X
             </button>
-            <button
-              className="language-btn"
-              onClick={() => changeLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className="language-btn"
-              onClick={() => changeLanguage("sk")}
-            >
-              SLO
-            </button>
-          </div>
-        </div>
-        <ul>
-          <li>
-            <Link to="/">{t("navbar.home")}</Link>
-          </li>
-          <li>
-            <Link to="/news">{t("navbar.news")}</Link>
-          </li>
-          <li>
-            <Link to="/services">{t("navbar.services")}</Link>
-          </li>
-          <li>
-            <Link to="/jobs">{t("navbar.jobs")}</Link>
-          </li>
-          <li>
-            <Link to="/contact">{t("navbar.contact")}</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">{t("navbar.dashboard")}</Link>
-          </li>
-          <li>_______________</li>
-          <li>
-            <div className="admin-login-container">
-              <Link to="/login">{t("navbar.login")}</Link>
+            <div className="languages-container">
+              <button
+                className="language-btn"
+                onClick={() => changeLanguage("de")}
+              >
+                DE
+              </button>
+              <button
+                className="language-btn"
+                onClick={() => changeLanguage("en")}
+              >
+                EN
+              </button>
+              <button
+                className="language-btn"
+                onClick={() => changeLanguage("sk")}
+              >
+                SLO
+              </button>
             </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+          <ul>
+            <li>
+              <Link to="/">{t("navbar.home")}</Link>
+            </li>
+            <li>
+              <Link to="/news">{t("navbar.news")}</Link>
+            </li>
+            <li>
+              <Link to="/services">{t("navbar.services")}</Link>
+            </li>
+            <li>
+              <Link to="/jobs">{t("navbar.jobs")}</Link>
+            </li>
+            <li>
+              <Link to="/contact">{t("navbar.contact")}</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">{t("navbar.dashboard")}</Link>
+            </li>
+            <li>_______________</li>
+            <li>
+              <div className="admin-login-container">
+                <Link to="/login">{t("navbar.login")}</Link>
+              </div>
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
