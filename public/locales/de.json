@@ -1,86 +1,113 @@
 {
-    "contact": {
-      "title": "Kontakt",
-      "company": "Barta Trans s.r.o.",
-      "address1": "Male Kosihy 2",
-      "address2": "SK - 943 61 Male Kosihy",
-      "phone1": "+43 660 8636120 / Levente Barta /",
-      "phone2": "+49 159 01227139 / Sandor Barta /",
-      "email": "bartatrans@gmx.net"
+  "contact": {
+    "title": "Kontakt",
+    "company": "Barta Trans s.r.o.",
+    "address1": "Male Kosihy 2",
+    "address2": "SK - 943 61 Male Kosihy",
+    "phone1": "+43 660 8636120 / Levente Barta /",
+    "phone2": "+49 159 01227139 / Sandor Barta /",
+    "email": "bartatrans@gmx.net"
+  },
+  "navbar": {
+    "home": "Startseite",
+    "news": "Nachrichten",
+    "services": "Dienstleistungen",
+    "jobs": "Jobs",
+    "contact": "Kontakt",
+    "dashboard": "Admin Dashboard",
+    "login": "Admin Login"
+  },
+  "impressum": {
+    "title": "Impressum",
+    "info": "Angaben gemäß § 5 TMG:",
+    "company": "Barta Trans s.r.o., Male Kosihy 2, SK - 943 61 Male Kosihy",
+    "representedBy": "Vertreten durch:",
+    "representatives": "Levente Barta, Sandor Barta",
+    "contact": "Kontakt:",
+    "phone1": "Telefon: +43 660 8636120 (Levente Barta)",
+    "phone2": "Telefon: +49 159 01227139 (Sandor Barta)",
+    "email": "Email: bartatrans@gmx.net",
+    "vatNumber": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
+    "vat": "[Geben Sie hier Ihre Umsatzsteuer-Identifikationsnummer ein, falls zutreffend]",
+    "responsible": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:",
+    "responsiblePerson": "Levente Barta, Male Kosihy 2, SK - 943 61 Male Kosihy"
+  },
+  "milestones": {
+    "title": "Zeitleiste von Barta Trans s.r.o.",
+    "1": {
+      "date": "September 2021",
+      "title": "Gründung",
+      "description": "Barta Trans s.r.o. wird gegründet."
     },
-    "navbar": {
-      "home": "Startseite",
-      "news": "Nachrichten",
-      "services": "Dienstleistungen",
-      "jobs": "Jobs",
-      "contact": "Kontakt",
-      "dashboard": "Dashboard",
-      "login": "Admin Login"
+    "2": {
+      "date": "2021-2022",
+      "title": "Teambildung",
+      "description": "Kurz nach der Gründung: Ein zuverlässiges und erfahrenes Team wird aufgebaut."
     },
-    "impressum": {
-      "title": "Impressum",
-      "info": "Angaben gemäß § 5 TMG:",
-      "company": "Barta Trans s.r.o., Male Kosihy 2, SK - 943 61 Male Kosihy",
-      "representedBy": "Vertreten durch:",
-      "representatives": "Levente Barta, Sandor Barta",
-      "contact": "Kontakt:",
-      "phone1": "Telefon: +43 660 8636120 (Levente Barta)",
-      "phone2": "Telefon: +49 159 01227139 (Sandor Barta)",
-      "email": "Email: bartatrans@gmx.net",
-      "vatNumber": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
-      "vat": "[Geben Sie hier Ihre Umsatzsteuer-Identifikationsnummer ein, falls zutreffend]",
-      "responsible": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:",
-      "responsiblePerson": "Levente Barta, Male Kosihy 2, SK - 943 61 Male Kosihy"
+    "3": {
+      "date": "2022",
+      "title": "Inlandstransport",
+      "description": "Aufbau eines umfangreichen Netzes für den Inlandstransport."
     },
-    "milestones": {
-      "title": "Zeitleiste von Barta Trans s.r.o.",
-      "1": { "date": "September 2021", "title": "Gründung", "description": "Barta Trans s.r.o. wird gegründet." },
-      "2": { "date": "2021-2022", "title": "Teambildung", "description": "Kurz nach der Gründung: Ein zuverlässiges und erfahrenes Team wird aufgebaut." },
-      "3": { "date": "2022", "title": "Inlandstransport", "description": "Aufbau eines umfangreichen Netzes für den Inlandstransport." },
-      "4": { "date": "2023", "title": "Internationaler Transport", "description": "Beginn der internationalen Transportdienstleistungen." },
-      "5": { "date": "2023", "title": "Wasser- und Luftfracht", "description": "Partnerschaften zur Bereitstellung von Wasser- und Luftfrachtlösungen werden etabliert." },
-      "6": { "date": "Zukünftige Pläne", "title": "Lagerdienstleistungen", "description": "Entwicklung einer modernen und effizienten Lagerinfrastruktur ist geplant." },
-      "7": { "date": "Vision", "title": "Vision", "description": "Streben, ein Pionier in der Transport- und Logistikbranche zu werden." }
+    "4": {
+      "date": "2023",
+      "title": "Internationaler Transport",
+      "description": "Beginn der internationalen Transportdienstleistungen."
     },
-    "services": {
-      "title": "Unsere Dienstleistungen",
-      "domesticTransport": {
-        "title": "Inlandstransport",
-        "description": "Unser Unternehmen verfügt über ein umfangreiches Netzwerk im Inland und bietet flexible Lösungen für Inlands-Transportbedürfnisse. Ob kleinere oder größere Frachtvolumen, mit unserer zuverlässigen Flotte und erfahrenen Fahrern garantieren wir effizienten und pünktlichen Transport."
-      },
-      "internationalTransport": {
-        "title": "Internationaler Transport",
-        "description": "Für unsere Kunden, die in den globalen Markt expandieren möchten, bieten wir auch internationale Transportdienstleistungen an. Mit Hilfe unserer erfahrenen Logistikprofis organisieren wir effizienten und sicheren Transport innerhalb Europas und darüber hinaus."
-      },
-      "seaAirFreight": {
-        "title": "See- und Luftfracht",
-        "description": "Durch unsere Partner bietet unser Unternehmen auch See- und Luftfrachtoptionen an. Wenn das Projekt oder die Art der Waren den See- oder Lufttransport sinnvoller macht, organisieren und führen wir den Transport bestmöglich durch."
-      },
-      "futurePlans": {
-        "title": "Zukünftige Pläne – Lagerdienstleistungen",
-        "description": "Barta Trans entwickelt seine Dienstleistungen kontinuierlich weiter, um unseren Kunden umfassendere Lösungen zu bieten. Dazu gehört auch die Einrichtung und Bereitstellung von Lagerdienstleistungen in unseren zukünftigen Plänen. Obwohl wir noch kein eigenes Lager haben, ist es unser Ziel, in naher Zukunft eine moderne und effiziente Lagerinfrastruktur zu entwickeln. Dies ermöglicht es uns, unseren Kunden die richtigen Lagerlösungen für ihre Bedürfnisse anzubieten, sei es für kurz- oder langfristige Lagerung, Warenannahme und -versand oder andere Lagerdienstleistungen. Die Einführung unserer Lagerdienstleistungen wird weitere Möglichkeiten für unsere Kunden schaffen, ihre Waren effizient zu verwalten und zu bewegen, ihre logistischen Prozesse zu optimieren. Wir danken Ihnen für Ihre Geduld und Ihr Vertrauen und freuen uns auf die zukünftige Zusammenarbeit!"
-      },
-      "vehicleFleet": {
-        "title": "Fahrzeugflotte",
-        "description": "Alle unsere Fahrzeuge sind modern und werden regelmäßig gewartet, um einen zuverlässigen und effizienten Transport zu gewährleisten. Unsere Fahrer sind erfahren und hochqualifiziert, um unseren Kunden den höchsten Standard an Dienstleistungen zu bieten. Barta Trans bietet stolz die modernsten und zuverlässigsten Transportlösungen an, einschließlich Schubboden- und Planensattelanhänger. Diese Fahrzeuge ermöglichen es uns, eine Vielzahl von Transportbedürfnissen zu erfüllen, sei es für große Volumen, große Gegenstände oder empfindliche Waren."
-      },
-      "ftlFleet": {
-        "title": "FTL-Flotte",
-        "walkingFloor": {
-          "title": "Schubboden",
-          "description": "Bietet Möglichkeiten für den Transport von landwirtschaftlichen Produkten, palettierten Waren, Sand/Schlamm/Erde, Kalkstein/Industriesalz, Produkten der Forst-/Papierindustrie, Abfall (nicht gefährlich, zerkleinerte Materialien und Granulate)."
-        },
-        "curtainSided": {
-          "title": "Planensattelanhänger",
-          "description": "Standard, Mega."
-        }
-      }
+    "5": {
+      "date": "2023",
+      "title": "Wasser- und Luftfracht",
+      "description": "Partnerschaften zur Bereitstellung von Wasser- und Luftfrachtlösungen werden etabliert."
     },
-    "welcome": {
-      "title": "Willkommen bei Barta Trans s.r.o.",
-      "description": "Barta Trans ist ein dynamisches und wachsendes Transportunternehmen, das im September 2021 gegründet wurde. Unser Unternehmen widmet sich der Bereitstellung hochwertiger Transport- und Logistikdienstleistungen für unsere Kunden. Kurz nach unserer Gründung gelang es uns, ein zuverlässiges und erfahrenes Team aufzubauen, das sich der Erfüllung der Kundenbedürfnisse und der Bereitstellung hochwertiger Dienstleistungen verschrieben hat. Unser Ziel ist es, unseren Kunden flexible und effiziente Lösungen anzubieten, sei es im nationalen oder internationalen Transport sowie bei logistischen Aufgaben. Wir bearbeiten sowohl kleine als auch große Frachtvolumen und streben danach, jede Transportaufgabe auf hohem Niveau zu erfüllen. Vielen Dank für Ihren Besuch auf unserer Website, und wir hoffen, Sie bald zu unseren Kunden zählen zu können!",
-      "visionTitle": "Vision: Barta Trans – Die Revolution von Innovation und Qualität",
-      "visionDescription": "Unser Ziel ist es, dass Barta Trans nicht nur ein Transportunternehmen ist, sondern ein Pionier in der Revolution von Innovation und Qualität im Transport- und Logistiksektor. Unsere Vision ist es, Industriestandards zu definieren und Dienstleistungen auf ein neues Niveau zu heben, indem wir eine Kultur der Exzellenz und Kundenorientierung schaffen. Um diese Vision zu erreichen, werden wir unsere technologische Infrastruktur kontinuierlich weiterentwickeln, um die neuesten Innovationen und digitalen Lösungen zu nutzen. Parallel dazu werden wir daran arbeiten, unser Team mit den besten Fachleuten zu stärken, die sich der Bereitstellung hochwertiger Dienstleistungen und der Kundenzufriedenheit verschrieben haben. Getreu unserer Vision werden wir uns immer auf die Bedürfnisse und Erwartungen unserer Kunden konzentrieren und alle unsere Aktivitäten darauf ausrichten, die Kundenzufriedenheit zu maximieren. Dies wird Barta Trans zu einem führenden Akteur in der Branche machen, der für Zuverlässigkeit, Innovation und Exzellenz anerkannt ist."
+    "6": {
+      "date": "Zukünftige Pläne",
+      "title": "Lagerdienstleistungen",
+      "description": "Entwicklung einer modernen und effizienten Lagerinfrastruktur ist geplant."
+    },
+    "7": {
+      "date": "Vision",
+      "title": "Vision",
+      "description": "Streben, ein Pionier in der Transport- und Logistikbranche zu werden."
     }
+  },
+  "services": {
+    "title": "Unsere Dienstleistungen",
+    "domesticTransport": {
+      "title": "Inlandstransport",
+      "description": "Unser Unternehmen verfügt über ein umfangreiches Netzwerk im Inland und bietet flexible Lösungen für Inlands-Transportbedürfnisse. Ob kleinere oder größere Frachtvolumen, mit unserer zuverlässigen Flotte und erfahrenen Fahrern garantieren wir effizienten und pünktlichen Transport."
+    },
+    "internationalTransport": {
+      "title": "Internationaler Transport",
+      "description": "Für unsere Kunden, die in den globalen Markt expandieren möchten, bieten wir auch internationale Transportdienstleistungen an. Mit Hilfe unserer erfahrenen Logistikprofis organisieren wir effizienten und sicheren Transport innerhalb Europas und darüber hinaus."
+    },
+    "seaAirFreight": {
+      "title": "See- und Luftfracht",
+      "description": "Durch unsere Partner bietet unser Unternehmen auch See- und Luftfrachtoptionen an. Wenn das Projekt oder die Art der Waren den See- oder Lufttransport sinnvoller macht, organisieren und führen wir den Transport bestmöglich durch."
+    },
+    "futurePlans": {
+      "title": "Zukünftige Pläne – Lagerdienstleistungen",
+      "description": "Barta Trans entwickelt seine Dienstleistungen kontinuierlich weiter, um unseren Kunden umfassendere Lösungen zu bieten. Dazu gehört auch die Einrichtung und Bereitstellung von Lagerdienstleistungen in unseren zukünftigen Plänen. Obwohl wir noch kein eigenes Lager haben, ist es unser Ziel, in naher Zukunft eine moderne und effiziente Lagerinfrastruktur zu entwickeln. Dies ermöglicht es uns, unseren Kunden die richtigen Lagerlösungen für ihre Bedürfnisse anzubieten, sei es für kurz- oder langfristige Lagerung, Warenannahme und -versand oder andere Lagerdienstleistungen. Die Einführung unserer Lagerdienstleistungen wird weitere Möglichkeiten für unsere Kunden schaffen, ihre Waren effizient zu verwalten und zu bewegen, ihre logistischen Prozesse zu optimieren. Wir danken Ihnen für Ihre Geduld und Ihr Vertrauen und freuen uns auf die zukünftige Zusammenarbeit!"
+    },
+    "vehicleFleet": {
+      "title": "Fahrzeugflotte",
+      "description": "Alle unsere Fahrzeuge sind modern und werden regelmäßig gewartet, um einen zuverlässigen und effizienten Transport zu gewährleisten. Unsere Fahrer sind erfahren und hochqualifiziert, um unseren Kunden den höchsten Standard an Dienstleistungen zu bieten. Barta Trans bietet stolz die modernsten und zuverlässigsten Transportlösungen an, einschließlich Schubboden- und Planensattelanhänger. Diese Fahrzeuge ermöglichen es uns, eine Vielzahl von Transportbedürfnissen zu erfüllen, sei es für große Volumen, große Gegenstände oder empfindliche Waren."
+    },
+    "ftlFleet": {
+      "title": "FTL-Flotte",
+      "walkingFloor": {
+        "title": "Schubboden",
+        "description": "Bietet Möglichkeiten für den Transport von landwirtschaftlichen Produkten, palettierten Waren, Sand/Schlamm/Erde, Kalkstein/Industriesalz, Produkten der Forst-/Papierindustrie, Abfall (nicht gefährlich, zerkleinerte Materialien und Granulate)."
+      },
+      "curtainSided": {
+        "title": "Planensattelanhänger",
+        "description": "Standard, Mega."
+      }
+    }
+  },
+  "welcome": {
+    "title": "Willkommen bei Barta Trans s.r.o.",
+    "description": "Barta Trans ist ein dynamisches und wachsendes Transportunternehmen, das im September 2021 gegründet wurde. Unser Unternehmen widmet sich der Bereitstellung hochwertiger Transport- und Logistikdienstleistungen für unsere Kunden. Kurz nach unserer Gründung gelang es uns, ein zuverlässiges und erfahrenes Team aufzubauen, das sich der Erfüllung der Kundenbedürfnisse und der Bereitstellung hochwertiger Dienstleistungen verschrieben hat. Unser Ziel ist es, unseren Kunden flexible und effiziente Lösungen anzubieten, sei es im nationalen oder internationalen Transport sowie bei logistischen Aufgaben. Wir bearbeiten sowohl kleine als auch große Frachtvolumen und streben danach, jede Transportaufgabe auf hohem Niveau zu erfüllen. Vielen Dank für Ihren Besuch auf unserer Website, und wir hoffen, Sie bald zu unseren Kunden zählen zu können!",
+    "visionTitle": "Vision: Barta Trans – Die Revolution von Innovation und Qualität",
+    "visionDescription": "Unser Ziel ist es, dass Barta Trans nicht nur ein Transportunternehmen ist, sondern ein Pionier in der Revolution von Innovation und Qualität im Transport- und Logistiksektor. Unsere Vision ist es, Industriestandards zu definieren und Dienstleistungen auf ein neues Niveau zu heben, indem wir eine Kultur der Exzellenz und Kundenorientierung schaffen. Um diese Vision zu erreichen, werden wir unsere technologische Infrastruktur kontinuierlich weiterentwickeln, um die neuesten Innovationen und digitalen Lösungen zu nutzen. Parallel dazu werden wir daran arbeiten, unser Team mit den besten Fachleuten zu stärken, die sich der Bereitstellung hochwertiger Dienstleistungen und der Kundenzufriedenheit verschrieben haben. Getreu unserer Vision werden wir uns immer auf die Bedürfnisse und Erwartungen unserer Kunden konzentrieren und alle unsere Aktivitäten darauf ausrichten, die Kundenzufriedenheit zu maximieren. Dies wird Barta Trans zu einem führenden Akteur in der Branche machen, der für Zuverlässigkeit, Innovation und Exzellenz anerkannt ist."
   }
-  
+}
