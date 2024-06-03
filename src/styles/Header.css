@@ -37,7 +37,7 @@
   position: fixed; /* Ändert von absolute zu fixed */
   top: 0;
   right: 0;
-  width: 50%;
+  width: 60%;
   height: 100%;
   background: linear-gradient(180deg, rgb(51, 123, 200), rgb(23, 40, 106));
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -64,6 +64,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-left: 0;
 }
 
 .languages-container button {
