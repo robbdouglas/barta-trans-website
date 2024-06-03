@@ -1,5 +1,5 @@
 .header-container {
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,6 +44,7 @@
   transform: translateX(100%); /* Menü außerhalb des Sichtbereichs */
   z-index: 99;
   visibility: hidden;
+  overflow: hidden;
 }
 
 .header-container.menu-open .menu {
