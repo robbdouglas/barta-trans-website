@@ -62,9 +62,9 @@ function Header() {
             <li>
               <Link to="/dashboard">{t("navbar.dashboard")}</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/login">{t("navbar.login")}</Link>
-            </li>
+            </li> */}
           </ul>
           <div className="languages-container">
             <button
@@ -132,14 +132,15 @@ function Header() {
             <li>
               <Link to="/contact">{t("navbar.contact")}</Link>
             </li>
+            <li>_______________</li>
             <li>
               <Link to="/dashboard">{t("navbar.dashboard")}</Link>
             </li>
-            <li>_______________</li>
+
             <li>
-              <div className="admin-login-container">
+              {/* <div className="admin-login-container">
                 <Link to="/login">{t("navbar.login")}</Link>
-              </div>
+              </div> */}
             </li>
           </ul>
         </div>
