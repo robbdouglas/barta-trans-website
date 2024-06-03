@@ -8,7 +8,11 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: black;
+  /* background-color: black; */
+  background-image: url(../assets/sep09.jpg);
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
   color: rgb(230, 212, 212);
   font-family: "Roboto", sans-serif;
 }

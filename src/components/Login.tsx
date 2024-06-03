@@ -7,6 +7,8 @@ import styled from "styled-components";
 import Header from "./Header";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "../styles/Login.css";
+import Footer from "./Footer";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -89,114 +91,36 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Header />
-      <Title>Login</Title>
-      <Form onSubmit={handleLogin}>
-        <InputContainer>
-          <Label>Username:</Label>
-          <Input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </InputContainer>
-        <InputContainer>
-          <Label>Password:</Label>
-          <PasswordWrapper>
-            <PasswordInput
-              type={showPassword ? "text" : "password"}
+      <h2>Login</h2>
+      <div className="login-container">
+        <form onSubmit={handleLogin}>
+          <div>
+            <label>Username:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <PasswordIcon
-              icon={showPassword ? faEyeSlash : faEye}
-              onClick={toggleShowPassword}
-            />
-          </PasswordWrapper>
-        </InputContainer>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-        <SubmitButton type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </SubmitButton>
-      </Form>
-      <ToastContainer position="bottom-center" />
-    </Container>
+          </div>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+      </div>
+      <Footer />
+    </div>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  max-width: 400px;
-  margin: auto;
-
-  @media (max-width: 600px) {
-    padding: 10px;
-    max-width: 90%;
-  }
-`;
-
-const Title = styled.h2`
-  margin-bottom: 20px;
-`;
-
-const Form = styled.form`
-  width: 100%;
-`;
-
-const InputContainer = styled.div`
-  margin-bottom: 15px;
-`;
-
-const Label = styled.label`
-  display: block;
-  margin-bottom: 5px;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-`;
-
-const PasswordWrapper = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-`;
-
-const PasswordInput = styled.input`
-  width: 100%;
-  padding: 8px;
-  padding-right: 40px; /* Platz für das Icon */
-  box-sizing: border-box;
-`;
-
-const PasswordIcon = styled(FontAwesomeIcon)`
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
-`;
-
-const ErrorMessage = styled.p`
-  color: red;
-  margin-bottom: 15px;
-`;
-
-const SubmitButton = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-
-  &:disabled {
-    background-color: #aaa;
-  }
-`;
 
 export default Login;

@@ -1,11 +1,87 @@
-.welcome-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
+.small-welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
-.welcome-container p {
-    margin: 10px;
+small {
+  font-size: 1.2rem;
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.welcome-text {
+  text-align: center;
+  color: #ffffff;
+  margin: auto;
+}
+
+.welcome-text p {
+  font-size: 4rem;
+  font-weight: 300;
+  margin: 0;
+  overflow: hidden;
+  border-right: 0.15em solid rgb(48, 147, 205); /* The typewriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  display: block; /* Änderung des Display-Typs auf block */
+}
+
+.barta {
+  animation: typingBarta 2s steps(40, end) 1s 1 normal both,
+    blink-caret 0.75s step-end infinite, fadeOutCursor 0s 3s forwards; /* Neue Animation zum Ausblenden des Cursors */
+}
+
+.trans {
+  opacity: 0;
+  animation: typingTrans 2s steps(40, end) 4.5s 1 normal both,
+    blink-caret 0.75s step-end infinite, fadeIn 0s 4.5s forwards; /* Hier wird die fadeIn-Animation verzögert gestartet */
+}
+
+@keyframes fadeOutCursor {
+  0% {
+    border-color: rgb(48, 147, 205);
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
+@keyframes typingBarta {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typingTrans {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(48, 147, 205);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
