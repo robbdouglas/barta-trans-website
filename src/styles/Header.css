@@ -1,5 +1,4 @@
 .header-container {
-  /* position: absolute; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -39,15 +38,28 @@
   top: 0;
   right: 0;
   width: 50%;
-  height: 100%;
+  height: 50%;
   background: linear-gradient(180deg, rgb(51, 123, 200), rgb(23, 40, 106));
-  transition: transform 0.3s ease-in-out; /* Übergangseffekt */
-  transform: translateX(100%); /* Menü außerhalb des Sichtbereichs */
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
   z-index: 99;
+  display: none;
 }
 
 .header-container.menu-open .menu {
-  transform: translateX(0); /* Menü einblenden */
+  transform: translateX(0);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  background: linear-gradient(180deg, rgb(51, 123, 200), rgb(23, 40, 106));
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .menu-header {
@@ -94,7 +106,6 @@ a {
 }
 
 /* Responsive Styles */
-
 @media (min-width: 1100px) {
   .header-container {
     position: fixed;
@@ -111,13 +122,10 @@ a {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    /* margin-right: 20px; */
   }
   .navbar ul {
     display: flex;
     flex-direction: row;
-
     margin-left: 50px;
     margin-right: 100px;
   }
