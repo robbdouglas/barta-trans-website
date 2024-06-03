@@ -6,7 +6,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import Header from "./Header";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/Login.css";
 import Footer from "./Footer";
 
@@ -38,12 +38,13 @@ const Login: React.FC = () => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        style: { backgroundColor: 'green', color: 'white' }
+        style: { backgroundColor: "green", color: "white" },
       });
       if (response.data.token) {
         setTimeout(() => navigate("/dashboard"), 1500); // Verzögerung, um Toast anzuzeigen
       }
-    } catch (err: any) {  // Typisieren des Fehlers als 'any'
+    } catch (err: any) {
+      // Typisieren des Fehlers als 'any'
       if (err.response) {
         // Server hat mit einem Statuscode geantwortet, der außerhalb des Bereichs von 2xx liegt
         toast.error("Login failed. Please check your username and password.", {
@@ -53,7 +54,7 @@ const Login: React.FC = () => {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          style: { backgroundColor: 'red', color: 'white' }
+          style: { backgroundColor: "red", color: "white" },
         });
       } else if (err.request) {
         // Anfrage wurde gemacht, aber keine Antwort erhalten
@@ -64,7 +65,7 @@ const Login: React.FC = () => {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          style: { backgroundColor: 'red', color: 'white' }
+          style: { backgroundColor: "red", color: "white" },
         });
       } else {
         // Etwas ist beim Erstellen der Anfrage schief gelaufen
@@ -75,7 +76,7 @@ const Login: React.FC = () => {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          style: { backgroundColor: 'red', color: 'white' }
+          style: { backgroundColor: "red", color: "white" },
         });
       }
       console.error(err);
@@ -89,7 +90,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <Container>
+    <div>
       <Header />
       <h2>Login</h2>
       <div className="login-container">
