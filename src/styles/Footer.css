@@ -1,3 +1,17 @@
+/* .footer-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgb(86, 202, 228), rgb(23, 40, 106));
+  color: white;
+  height: 10vh;
+  position: absolute;
+  margin-top: 5vh;
+  bottom: 0;
+  left: 0;
+  top: 100%;
+} */
 .footer-container {
   width: 100vw;
   display: flex;
@@ -6,10 +20,8 @@
   background: linear-gradient(180deg, rgb(86, 202, 228), rgb(23, 40, 106));
   color: white;
   height: 10vh;
-  position: absolut;
-  bottom: 0;
+  margin-top: auto; /* Fügt automatisch den benötigten Platz hinzu, um den Footer nach unten zu schieben */
 }
-
 .copyright {
   margin: 0 30px;
 }

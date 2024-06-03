@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from "react-i18next";
+import "../styles/Jobs.css";
 
 interface Job {
   _id: string;
@@ -38,11 +39,11 @@ const Bounce1 = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  animation: ${bounce} 2.0s infinite ease-in-out;
+  animation: ${bounce} 2s infinite ease-in-out;
 `;
 
 const Bounce2 = styled(Bounce1)`
-  animation-delay: -1.0s;
+  animation-delay: -1s;
 `;
 
 const Jobs: React.FC = () => {
@@ -57,7 +58,7 @@ const Jobs: React.FC = () => {
     try {
       const response = await axios.get(`${port}/jobs/jobs`, {
         headers: { Authorization: `Bearer ${token}` },
-        params: { lang: i18n.language } // Sprache an die Backend-Anfrage anhängen
+        params: { lang: i18n.language }, // Sprache an die Backend-Anfrage anhängen
       });
       if (Array.isArray(response.data)) {
         setJobs(response.data);

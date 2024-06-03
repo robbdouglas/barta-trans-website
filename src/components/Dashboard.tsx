@@ -283,153 +283,155 @@ const Dashboard: React.FC = () => {
           <Spinner />
         </SpinnerOverlay>
       )}
-      <h1>Dashboard</h1>
-      <h2>Jobs</h2>
-      <ul>
-        {Array.isArray(jobs) && jobs.length > 0 ? (
-          jobs.map((job) => (
-            <li key={job._id}>
-              {job.title}: {job.description}
-              <button onClick={() => deleteJob(job._id)}>Delete</button>
-            </li>
-          ))
-        ) : (
-          <li>No jobs available</li>
-        )}
-      </ul>
-      <div>
-        <h3>Add Job</h3>
-        <input
-          type="text"
-          placeholder="Title"
-          value={jobTitle}
-          onChange={(e) => setJobTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Description"
-          value={jobDescription}
-          onChange={(e) => setJobDescription(e.target.value)}
-        />
-        <button onClick={addJob}>Add Job</button>
-      </div>
-      <h2>News</h2>
-      <ul>
-        {Array.isArray(news) && news.length > 0 ? (
-          news.map((newsItem) => (
-            <li key={newsItem._id}>
-              {newsItem.title}: {newsItem.content}
-              <button onClick={() => deleteNews(newsItem._id)}>Delete</button>
-            </li>
-          ))
-        ) : (
-          <li>No news available</li>
-        )}
-      </ul>
-      <div>
-        <h3>Add News</h3>
-        <input
-          type="text"
-          placeholder="Title"
-          value={newsTitle}
-          onChange={(e) => setNewsTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Content"
-          value={newsContent}
-          onChange={(e) => setNewsContent(e.target.value)}
-        />
-        <button onClick={addNews}>Add News</button>
-      </div>
-      {userRole === "superuser" ? (
+      <div className="dashboard-container">
+        <h1>Dashboard</h1>
+        <h2>Jobs</h2>
+        <ul>
+          {Array.isArray(jobs) && jobs.length > 0 ? (
+            jobs.map((job) => (
+              <li key={job._id}>
+                {job.title}: {job.description}
+                <button onClick={() => deleteJob(job._id)}>Delete</button>
+              </li>
+            ))
+          ) : (
+            <li>No jobs available</li>
+          )}
+        </ul>
         <div>
-          <h2>Manage Users</h2>
-          <form onSubmit={handleCreateUser}>
-            <input
-              value={newUsername}
-              onChange={(e) => setNewUsername(e.target.value)}
-              placeholder="Username"
-              required
-            />
-            <input
-              type="password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              placeholder="Password"
-              required
-            />
-            <select
-              value={newUserRole}
-              onChange={(e) => setNewUserRole(e.target.value)}
-            >
-              <option value="admin">Admin</option>
-              <option value="superuser">Superuser</option>
-            </select>
-            <button type="submit" onClick={handleCreateUser}>
-              Create User
-            </button>
-          </form>
-          {editUserId && (
-            <form onSubmit={handleUpdateUser}>
-              <h3>Edit User</h3>
+          <h3>Add Job</h3>
+          <input
+            type="text"
+            placeholder="Title"
+            value={jobTitle}
+            onChange={(e) => setJobTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            value={jobDescription}
+            onChange={(e) => setJobDescription(e.target.value)}
+          />
+          <button onClick={addJob}>Add Job</button>
+        </div>
+        <h2>News</h2>
+        <ul>
+          {Array.isArray(news) && news.length > 0 ? (
+            news.map((newsItem) => (
+              <li key={newsItem._id}>
+                {newsItem.title}: {newsItem.content}
+                <button onClick={() => deleteNews(newsItem._id)}>Delete</button>
+              </li>
+            ))
+          ) : (
+            <li>No news available</li>
+          )}
+        </ul>
+        <div>
+          <h3>Add News</h3>
+          <input
+            type="text"
+            placeholder="Title"
+            value={newsTitle}
+            onChange={(e) => setNewsTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Content"
+            value={newsContent}
+            onChange={(e) => setNewsContent(e.target.value)}
+          />
+          <button onClick={addNews}>Add News</button>
+        </div>
+        {userRole === "superuser" ? (
+          <div>
+            <h2>Manage Users</h2>
+            <form onSubmit={handleCreateUser}>
               <input
-                value={editUsername}
-                onChange={(e) => setEditUsername(e.target.value)}
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
                 placeholder="Username"
                 required
               />
               <input
                 type="password"
-                value={editPassword}
-                onChange={(e) => setEditPassword(e.target.value)}
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="Password"
                 required
               />
               <select
-                value={editUserRole}
-                onChange={(e) => setEditUserRole(e.target.value)}
+                value={newUserRole}
+                onChange={(e) => setNewUserRole(e.target.value)}
               >
                 <option value="admin">Admin</option>
                 <option value="superuser">Superuser</option>
               </select>
-              <button type="submit">Update User</button>
-              <button type="button" onClick={() => setEditUserId(null)}>
-                Cancel
+              <button type="submit" onClick={handleCreateUser}>
+                Create User
               </button>
             </form>
-          )}
-          <ul>
-            {users.map((user) => (
-              <li key={user._id}>
-                <span>
-                  {user.username} - role: {user.role}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEditUserId(user._id);
-                    setEditUsername(user.username);
-                    setEditPassword(""); // Do not populate password for security reasons
-                    setEditUserRole(user.role);
-                  }}
+            {editUserId && (
+              <form onSubmit={handleUpdateUser}>
+                <h3>Edit User</h3>
+                <input
+                  value={editUsername}
+                  onChange={(e) => setEditUsername(e.target.value)}
+                  placeholder="Username"
+                  required
+                />
+                <input
+                  type="password"
+                  value={editPassword}
+                  onChange={(e) => setEditPassword(e.target.value)}
+                  placeholder="Password"
+                  required
+                />
+                <select
+                  value={editUserRole}
+                  onChange={(e) => setEditUserRole(e.target.value)}
                 >
-                  Edit User
+                  <option value="admin">Admin</option>
+                  <option value="superuser">Superuser</option>
+                </select>
+                <button type="submit">Update User</button>
+                <button type="button" onClick={() => setEditUserId(null)}>
+                  Cancel
                 </button>
-                <button
-                  type="button"
-                  onClick={() => handleDeleteUser(user._id)}
-                >
-                  Delete User
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p>User role is not superuser. Current role: {userRole}</p>
-      )}
-      <button onClick={handleLogout}>Logout</button>
+              </form>
+            )}
+            <ul>
+              {users.map((user) => (
+                <li key={user._id}>
+                  <span>
+                    {user.username} - role: {user.role}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditUserId(user._id);
+                      setEditUsername(user.username);
+                      setEditPassword(""); // Do not populate password for security reasons
+                      setEditUserRole(user.role);
+                    }}
+                  >
+                    Edit User
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteUser(user._id)}
+                  >
+                    Delete User
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p>User role is not superuser. Current role: {userRole}</p>
+        )}
+        <button onClick={handleLogout}>Logout</button>
+      </div>
     </div>
   );
 };
