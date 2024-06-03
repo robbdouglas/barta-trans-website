@@ -34,22 +34,23 @@
 }
 
 .menu {
-  position: absolute;
+  position: fixed; /* Ändert von absolute zu fixed */
   top: 0;
   right: 0;
   width: 50%;
   height: 100%;
   background: linear-gradient(180deg, rgb(51, 123, 200), rgb(23, 40, 106));
-  transition: transform 0.3s ease-in-out; /* Übergangseffekt */
-  transform: translateX(100%); /* Menü außerhalb des Sichtbereichs */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: translateX(100%);
   z-index: 99;
   visibility: hidden;
-  overflow: hidden;
+  opacity: 0;
 }
 
-.header-container.menu-open .menu {
-  transform: translateX(0); /* Menü einblenden */
+.menu-open .menu {
+  transform: translateX(0);
   visibility: visible;
+  opacity: 1;
 }
 
 .menu-header {
@@ -108,8 +109,6 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* align-items: center; */
-    /* width: 100%; */
     margin-right: 20px;
   }
   .navbar ul {
