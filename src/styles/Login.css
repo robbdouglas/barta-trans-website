@@ -1,8 +1,7 @@
 /* Login.css */
 
 .login-container {
-  margin-top: 10vh; /* Fügt einen oberen Abstand hinzu, der der Höhe des Headers entspricht */
-
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +12,7 @@ form {
   background: #ffffffbb;
   padding: 2rem;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: rgb(51, 123, 200, 0.6) 0px 0px 120px;
   width: 300px;
   max-width: 100%;
 }
@@ -30,7 +29,7 @@ label {
   color: #000000;
 }
 
-/* input[type="text"],
+input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 0.5rem;
@@ -38,7 +37,7 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-} */
+}
 
 button {
   width: 100%;
