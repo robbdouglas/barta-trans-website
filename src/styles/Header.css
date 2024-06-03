@@ -55,7 +55,7 @@
 .menu-open .menu {
   transform: translateX(0);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-
+  box-shadow: rgb(51, 123, 200) 0px 0px 10px;
   visibility: visible;
   opacity: 1;
 }
@@ -80,6 +80,12 @@
   color: white;
   border: none;
   cursor: pointer;
+  font-size: 1rem;
+  /* margin: 4px;
+  padding: 6px; */
+}
+.close-menu-btn {
+  padding: 2px 2px;
 }
 
 ul {
@@ -98,6 +104,10 @@ li {
 a {
   color: white;
   text-decoration: none;
+}
+a:hover {
+  color: #00b3ff;
+  text-shadow: #00eaff 0px 0px 20px;
 }
 
 /* .admin-login-container {
@@ -151,9 +161,9 @@ a {
     margin-right: 20px;
   }
   .languages-container button {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     margin: 0;
-    padding: 8px;
+    padding: 6px;
   }
 }
 

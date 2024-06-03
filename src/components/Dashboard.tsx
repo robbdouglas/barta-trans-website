@@ -291,7 +291,12 @@ const Dashboard: React.FC = () => {
             jobs.map((job) => (
               <li key={job._id}>
                 {job.title}: {job.description}
-                <button onClick={() => deleteJob(job._id)}>Delete</button>
+                <button
+                  className="deleteBtn"
+                  onClick={() => deleteJob(job._id)}
+                >
+                  Delete
+                </button>
               </li>
             ))
           ) : (
@@ -320,7 +325,12 @@ const Dashboard: React.FC = () => {
             news.map((newsItem) => (
               <li key={newsItem._id}>
                 {newsItem.title}: {newsItem.content}
-                <button onClick={() => deleteNews(newsItem._id)}>Delete</button>
+                <button
+                  className="deleteBtn"
+                  onClick={() => deleteNews(newsItem._id)}
+                >
+                  Delete
+                </button>
               </li>
             ))
           ) : (
