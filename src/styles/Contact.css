@@ -3,6 +3,7 @@
 } */
 .contact-container {
   display: flex;
+  padding-top: 10vh; /* Fügt einen oberen Abstand hinzu, der der Höhe des Headers entspricht */
 
   height: 100vh;
   display: flex;

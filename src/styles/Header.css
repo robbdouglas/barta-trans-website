@@ -1,21 +1,26 @@
 .header-container {
-  width: 100vw;
+  position: fixed; /* Fixiert den Header am oberen Rand */
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
   height: 10vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000; /* Stellt sicher, dass der Header über anderen Inhalten steht */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.5); /* Weißer Hintergrundlicht-Schatten */
 }
 
 .header-logo {
   height: 70px;
-  margin-left: 20px;
+  /* margin-left:  */
   border-radius: 5px;
 }
 
 .header-logo img {
   height: 70px;
-  margin-left: 20px;
+  margin-left: 10px;
   border-radius: 5px;
 }
 
@@ -34,7 +39,7 @@
 }
 
 .menu {
-  position: fixed; /* Ändert von absolute zu fixed */
+  position: fixed;
   top: 0;
   right: 0;
   width: 60%;
@@ -49,6 +54,8 @@
 
 .menu-open .menu {
   transform: translateX(0);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
   visibility: visible;
   opacity: 1;
 }
@@ -93,9 +100,9 @@ a {
   text-decoration: none;
 }
 
-.admin-login-container {
+/* .admin-login-container {
   margin-top: 20px;
-}
+} */
 
 /* Responsive Styles */
 @media (min-width: 768px) {
@@ -104,13 +111,20 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    height: 10vh;
+    font-size: 0.9rem;
+    font-weight: 550;
+  }
+  .header-logo img {
+    height: 70px;
+    margin-left: 10px;
+    border-radius: 5px;
   }
   .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 20px;
+    margin-right: 30px;
   }
   .navbar ul {
     display: flex;
@@ -127,5 +141,45 @@ a {
   }
   .menu {
     display: none;
+  }
+
+  .languages-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+  .languages-container button {
+    font-size: 0.6rem;
+    margin: 0;
+    padding: 8px;
+  }
+}
+
+@media (min-width: 1260px) {
+  .header-container {
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+  }
+  .languages-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    /* margin-left: 1.5rem; */
+  }
+  .languages-container button {
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 8px;
+  }
+  .navbar li {
+    margin: 0 1.4rem;
   }
 }

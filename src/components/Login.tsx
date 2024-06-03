@@ -7,6 +7,8 @@ import styled from "styled-components";
 import Header from "./Header";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../styles/Login.css";
+
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -85,51 +87,54 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Header />
-      <Title>Login</Title>
-      <Form onSubmit={handleLogin}>
-        <InputContainer>
-          <Label>Username:</Label>
-          <Input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </InputContainer>
-        <InputContainer>
-          <Label>Password:</Label>
-          <PasswordWrapper>
-            <PasswordInput
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+      <div className="login-container">
+        <Title>Login</Title>
+        <Form onSubmit={handleLogin}>
+          <InputContainer>
+            <Label>Username:</Label>
+            <Input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
-            <PasswordIcon
-              icon={showPassword ? faEyeSlash : faEye}
-              onClick={toggleShowPassword}
-            />
-          </PasswordWrapper>
-        </InputContainer>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-        <SubmitButton type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </SubmitButton>
-      </Form>
+          </InputContainer>
+          <InputContainer>
+            <Label>Password:</Label>
+            <PasswordWrapper>
+              <PasswordInput
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <PasswordIcon
+                icon={showPassword ? faEyeSlash : faEye}
+                onClick={toggleShowPassword}
+              />
+            </PasswordWrapper>
+          </InputContainer>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+          <SubmitButton type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </SubmitButton>
+        </Form>{" "}
+      </div>
       <ToastContainer position="bottom-center" />
     </Container>
   );
 };
 const Container = styled.div`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   max-width: 400px;
   margin: auto;
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     padding: 10px;
-    max-width: 90%;
+    max-width: 100%;
   }
 `;
 const Title = styled.h2`
@@ -172,6 +177,7 @@ const ErrorMessage = styled.p`
 `;
 const SubmitButton = styled.button`
   width: 100%;
+
   padding: 10px;
   background-color: #007bff;
   color: white;

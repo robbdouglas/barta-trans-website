@@ -1,4 +1,6 @@
 .news-container {
+  padding-top: 10vh; /* Fügt einen oberen Abstand hinzu, der der Höhe des Headers entspricht */
+
   display: flex;
   flex-direction: column;
   align-items: center;

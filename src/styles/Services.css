@@ -5,6 +5,7 @@
   justify-content: center;
   text-align: center;
   margin-top: 4rem;
+  padding-top: 10vh; /* Fügt einen oberen Abstand hinzu, der der Höhe des Headers entspricht */
 }
 
 .services-container p {

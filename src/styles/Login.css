@@ -1,7 +1,10 @@
 /* Login.css */
 
 .login-container {
+  margin-top: 10vh; /* Fügt einen oberen Abstand hinzu, der der Höhe des Headers entspricht */
+
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -27,7 +30,7 @@ label {
   color: #000000;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 0.5rem;
@@ -35,7 +38,7 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-}
+} */
 
 button {
   width: 100%;
@@ -56,4 +59,3 @@ button:disabled {
 button:hover:enabled {
   background-color: #0056b3;
 }
-

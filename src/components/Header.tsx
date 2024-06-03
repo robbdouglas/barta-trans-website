@@ -3,10 +3,12 @@ import { useTranslation } from "react-i18next";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-complete.png";
+import logoLarge from "../assets/logo-complete-old.png"; // Larger(old) logo
 
 function Header() {
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
@@ -28,8 +30,15 @@ function Header() {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
+      window.removeEventListener("resize", handleResize);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
@@ -39,7 +48,7 @@ function Header() {
       <div className={`header-container ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="header-logo">
           <Link to={"/"}>
-            <img src={logo} alt="logo" />
+            <img src={windowWidth >= 1024 ? logoLarge : logo} alt="logo" />
           </Link>
         </div>
         <nav className="navbar">
@@ -62,9 +71,6 @@ function Header() {
             <li>
               <Link to="/dashboard">{t("navbar.dashboard")}</Link>
             </li>
-            {/* <li>
-              <Link to="/login">{t("navbar.login")}</Link>
-            </li> */}
           </ul>
           <div className="languages-container">
             <button
@@ -135,12 +141,6 @@ function Header() {
             <li>_______________</li>
             <li>
               <Link to="/dashboard">{t("navbar.dashboard")}</Link>
-            </li>
-
-            <li>
-              {/* <div className="admin-login-container">
-                <Link to="/login">{t("navbar.login")}</Link>
-              </div> */}
             </li>
           </ul>
         </div>

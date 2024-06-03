@@ -1,4 +1,6 @@
 .dashboard-container {
+  padding-top: 10vh; /* Fügt einen oberen Abstand hinzu, der der Höhe des Headers entspricht */
+
   margin-top: 5rem;
   margin-bottom: 5rem;
   display: flex;
