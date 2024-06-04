@@ -5,6 +5,7 @@ import Header from "./Header";
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from "react-i18next";
 import "../styles/News.css";
+import news_banner from "../assets/imgs/DALL·E 2024-06-04 10.03.45 - A news page banner for a truck transport company. The banner should feature a modern, professional design with a large, powerful truck in the center, .webp";
 
 interface News {
   _id: string;
@@ -81,7 +82,15 @@ const News: React.FC = () => {
   return (
     <div>
       <Header />
+
       <section className="news-container">
+        <div className="news-banner-container">
+          <img
+            className="news-banner"
+            src={news_banner}
+            alt="truck_with_vinyl"
+          />
+        </div>
         <h1>News</h1>
         {loading ? (
           <SpinnerContainer>
@@ -89,9 +98,9 @@ const News: React.FC = () => {
             <Bounce2 />
           </SpinnerContainer>
         ) : (
-          <ul>
+          <ul className="news-ul">
             {news.map((newsItem) => (
-              <li key={newsItem._id}>
+              <li className="news-li" key={newsItem._id}>
                 <h2>{newsItem.title}</h2>
                 <p>{newsItem.content}</p>
               </li>
