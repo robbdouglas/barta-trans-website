@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
+import Footer from "./Footer";
 
 interface Job {
   _id: string;
@@ -276,7 +277,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="dashboard-main-container">
       {loading && (
         <SpinnerOverlay>
           <Spinner />
@@ -367,36 +368,38 @@ const Dashboard: React.FC = () => {
         {userRole === "superuser" ? (
           <div>
             <h2>Manage Users</h2>
-            <form onSubmit={handleCreateUser}>
-              <input
-                className="styled-input"
-                value={newUsername}
-                onChange={(e) => setNewUsername(e.target.value)}
-                placeholder="Username"
-                required
-              />
-              <input
-                type="password"
-                className="styled-input"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="Password"
-                required
-              />
-              <select
-                className="styled-input"
-                value={newUserRole}
-                onChange={(e) => setNewUserRole(e.target.value)}
-              >
-                <option value="admin">Admin</option>
-                <option value="superuser">Superuser</option>
-              </select>
-              <ButtonContainer>
-                <button type="submit" onClick={handleCreateUser}>
-                  Create User
-                </button>
-              </ButtonContainer>
-            </form>
+            <div className="manage-form">
+              <form onSubmit={handleCreateUser}>
+                <input
+                  className="styled-input"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                  placeholder="Username"
+                  required
+                />
+                <input
+                  type="password"
+                  className="styled-input"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="Password"
+                  required
+                />
+                <select
+                  className="styled-input"
+                  value={newUserRole}
+                  onChange={(e) => setNewUserRole(e.target.value)}
+                >
+                  <option value="admin">Admin</option>
+                  <option value="superuser">Superuser</option>
+                </select>
+                <ButtonContainer>
+                  <button type="submit" onClick={handleCreateUser}>
+                    Create User
+                  </button>
+                </ButtonContainer>
+              </form>
+            </div>
             {editUserId && (
               <form onSubmit={handleUpdateUser}>
                 <h3>Edit User</h3>
@@ -467,6 +470,7 @@ const Dashboard: React.FC = () => {
           <button onClick={handleLogout}>Logout</button>
         </ButtonContainer>
       </div>
+      <Footer />
     </div>
   );
 };

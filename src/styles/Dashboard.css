@@ -16,12 +16,11 @@ select {
   border-radius: 4px;
 }
 
-button {
+.dashboard-main-container button {
   padding: 10px 20px;
   margin: 10px 0;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
   color: white;
   cursor: pointer;
 }
@@ -73,12 +72,18 @@ button:hover {
   margin: 0 5px;
 }
 
-h2 {
+.jobs-h2 {
+  border: none;
+  padding-top: 0;
+}
+
+.dashboard-main-container h2 {
   border-top: #cccccc77 solid 1px;
   padding-top: 20px;
 }
 
-.jobs-h2 {
-  border: none;
-  padding-top: 0;
+.manage-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
