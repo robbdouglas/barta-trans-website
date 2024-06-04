@@ -1,38 +1,84 @@
+/* Dashboard.css */
 .dashboard-container {
-  padding-top: 10vh; /* Fügt einen oberen Abstand hinzu, der der Höhe des Headers entspricht */
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 20px;
+}
 
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+input,
+select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.deleteBtn {
-  background-color: #ff0000;
-  color: #ffffff;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin: 0 5px;
-  width: 8rem;
-}
-div h1,
-h2,
-h3 {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 1.5em;
-  /* margin: 0 auto; */
-  /* padding: 5%; */
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 9999;
 }
 
-div h1 {
-  font-size: 2rem;
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
 }
-div input {
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.button-container button {
+  width: 70%;
   margin: 0 5px;
-  box-sizing: border-box;
+}
+
+h2 {
+  border-top: #cccccc77 solid 1px;
+  padding-top: 20px;
+}
+
+.jobs-h2 {
+  border: none;
+  padding-top: 0;
 }

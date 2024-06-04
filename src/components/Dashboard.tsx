@@ -277,26 +277,27 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      <Header />
       {loading && (
         <SpinnerOverlay>
           <Spinner />
         </SpinnerOverlay>
       )}
+      <Header />
       <div className="dashboard-container">
-        <h1>Dashboard</h1>
-        <h2>Jobs</h2>
+        <h2 className="jobs-h2">Jobs</h2>
         <ul>
-          {Array.isArray(jobs) && jobs.length > 0 ? (
+          {jobs.length > 0 ? (
             jobs.map((job) => (
               <li key={job._id}>
                 {job.title}: {job.description}
-                <button
-                  className="deleteBtn"
-                  onClick={() => deleteJob(job._id)}
-                >
-                  Delete
-                </button>
+                <ButtonContainer>
+                  <button
+                    className="deleteBtn"
+                    onClick={() => deleteJob(job._id)}
+                  >
+                    Delete
+                  </button>
+                </ButtonContainer>
               </li>
             ))
           ) : (
@@ -307,17 +308,21 @@ const Dashboard: React.FC = () => {
           <h3>Add Job</h3>
           <input
             type="text"
+            className="styled-input"
             placeholder="Title"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
           />
           <input
             type="text"
+            className="styled-input"
             placeholder="Description"
             value={jobDescription}
             onChange={(e) => setJobDescription(e.target.value)}
           />
-          <button onClick={addJob}>Add Job</button>
+          <ButtonContainer>
+            <button onClick={addJob}>Add Job</button>
+          </ButtonContainer>
         </div>
         <h2>News</h2>
         <ul>
@@ -325,12 +330,14 @@ const Dashboard: React.FC = () => {
             news.map((newsItem) => (
               <li key={newsItem._id}>
                 {newsItem.title}: {newsItem.content}
-                <button
-                  className="deleteBtn"
-                  onClick={() => deleteNews(newsItem._id)}
-                >
-                  Delete
-                </button>
+                <ButtonContainer>
+                  <button
+                    className="deleteBtn"
+                    onClick={() => deleteNews(newsItem._id)}
+                  >
+                    Delete
+                  </button>
+                </ButtonContainer>
               </li>
             ))
           ) : (
@@ -341,23 +348,28 @@ const Dashboard: React.FC = () => {
           <h3>Add News</h3>
           <input
             type="text"
+            className="styled-input"
             placeholder="Title"
             value={newsTitle}
             onChange={(e) => setNewsTitle(e.target.value)}
           />
           <input
             type="text"
+            className="styled-input"
             placeholder="Content"
             value={newsContent}
             onChange={(e) => setNewsContent(e.target.value)}
           />
-          <button onClick={addNews}>Add News</button>
+          <ButtonContainer>
+            <button onClick={addNews}>Add News</button>
+          </ButtonContainer>
         </div>
         {userRole === "superuser" ? (
           <div>
             <h2>Manage Users</h2>
             <form onSubmit={handleCreateUser}>
               <input
+                className="styled-input"
                 value={newUsername}
                 onChange={(e) => setNewUsername(e.target.value)}
                 placeholder="Username"
@@ -365,26 +377,31 @@ const Dashboard: React.FC = () => {
               />
               <input
                 type="password"
+                className="styled-input"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="Password"
                 required
               />
               <select
+                className="styled-input"
                 value={newUserRole}
                 onChange={(e) => setNewUserRole(e.target.value)}
               >
                 <option value="admin">Admin</option>
                 <option value="superuser">Superuser</option>
               </select>
-              <button type="submit" onClick={handleCreateUser}>
-                Create User
-              </button>
+              <ButtonContainer>
+                <button type="submit" onClick={handleCreateUser}>
+                  Create User
+                </button>
+              </ButtonContainer>
             </form>
             {editUserId && (
               <form onSubmit={handleUpdateUser}>
                 <h3>Edit User</h3>
                 <input
+                  className="styled-input"
                   value={editUsername}
                   onChange={(e) => setEditUsername(e.target.value)}
                   placeholder="Username"
@@ -392,22 +409,26 @@ const Dashboard: React.FC = () => {
                 />
                 <input
                   type="password"
+                  className="styled-input"
                   value={editPassword}
                   onChange={(e) => setEditPassword(e.target.value)}
                   placeholder="Password"
                   required
                 />
                 <select
+                  className="styled-input"
                   value={editUserRole}
                   onChange={(e) => setEditUserRole(e.target.value)}
                 >
                   <option value="admin">Admin</option>
                   <option value="superuser">Superuser</option>
                 </select>
-                <button type="submit">Update User</button>
-                <button type="button" onClick={() => setEditUserId(null)}>
-                  Cancel
-                </button>
+                <ButtonContainer>
+                  <button type="submit">Update User</button>
+                  <button type="button" onClick={() => setEditUserId(null)}>
+                    Cancel
+                  </button>
+                </ButtonContainer>
               </form>
             )}
             <ul>
@@ -416,23 +437,25 @@ const Dashboard: React.FC = () => {
                   <span>
                     {user.username} - role: {user.role}
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEditUserId(user._id);
-                      setEditUsername(user.username);
-                      setEditPassword(""); // Do not populate password for security reasons
-                      setEditUserRole(user.role);
-                    }}
-                  >
-                    Edit User
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteUser(user._id)}
-                  >
-                    Delete User
-                  </button>
+                  <ButtonContainer>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditUserId(user._id);
+                        setEditUsername(user.username);
+                        setEditPassword(""); // Do not populate password for security reasons
+                        setEditUserRole(user.role);
+                      }}
+                    >
+                      Edit User
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteUser(user._id)}
+                    >
+                      Delete User
+                    </button>
+                  </ButtonContainer>
                 </li>
               ))}
             </ul>
@@ -440,7 +463,9 @@ const Dashboard: React.FC = () => {
         ) : (
           <p>User role is not superuser. Current role: {userRole}</p>
         )}
-        <button onClick={handleLogout}>Logout</button>
+        <ButtonContainer>
+          <button onClick={handleLogout}>Logout</button>
+        </ButtonContainer>
       </div>
     </div>
   );
@@ -471,6 +496,18 @@ const Spinner = styled.div`
   width: 50px;
   height: 50px;
   animation: ${spin} 1s linear infinite;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+
+  button {
+    width: 70%;
+    margin: 0 5px;
+  }
 `;
 
 export default Dashboard;
