@@ -38,6 +38,21 @@
   color: white;
 }
 
+.menu-header .close-menu-btn {
+  font-size: 30px;
+  margin-right: 3rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  /* transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; */
+}
+.menu-header .close-menu-btn:hover {
+  color: #ffffff;
+  text-shadow: #ffffff 0px 0px 10px;
+  /* transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; */
+}
+
 .menu {
   font-weight: 600;
   font-size: 1.1rem;
@@ -70,8 +85,8 @@
   border-bottom: #ffffff 2px solid;
 }
 .menu-header button {
-  font-size: 30px;
-  margin: 10px;
+  font-size: 50px;
+  margin: 5px;
   padding: 5px;
   cursor: pointer;
   background: none;
