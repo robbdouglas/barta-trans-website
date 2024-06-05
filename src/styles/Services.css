@@ -1,13 +1,36 @@
 .services-container {
+  padding-top: 10vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  margin-top: 4rem;
-  padding-top: 10vh; /* Fügt einen oberen Abstand hinzu, der der Höhe des Headers entspricht */
+  /* height: 80vh; */
+  /* margin-top: 4rem; */
 }
 
 .services-container p {
   margin: 20px;
+}
+.services-banner-container {
+  background-color: rgba(128, 128, 128, 0.4);
+  min-width: 340px;
+  max-width: 100%;
+  border: none;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 6px;
+  box-sizing: border-box;
+  display: flex;
+
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.8);
+}
+.services-banner {
+  min-width: 300px;
+  max-width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  margin: 10px 10px 10px 10px;
+  border: none;
+  border-radius: 15px;
 }
