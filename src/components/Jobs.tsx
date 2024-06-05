@@ -5,7 +5,7 @@ import Header from "./Header";
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from "react-i18next";
 import "../styles/Jobs.css";
-
+import jobs_banner from "../assets/imgs/DALL·E 2024-06-04 11.43.23 - A realistic job banner for truck driver positions at a truck transport company. The banner should feature a high-quality image of a European truck on .webp";
 interface Job {
   _id: string;
   title: string;
@@ -82,6 +82,9 @@ const Jobs: React.FC = () => {
     <div>
       <Header />
       <section className="jobs-container">
+        <div className="jobs-banner-container">
+          <img className="jobs-banner" src={jobs_banner} alt="" />
+        </div>
         <h1>Jobs</h1>
         {loading ? (
           <SpinnerContainer>
@@ -89,9 +92,9 @@ const Jobs: React.FC = () => {
             <Bounce2 />
           </SpinnerContainer>
         ) : (
-          <ul>
+          <ul className="jobs-ul">
             {jobs.map((job) => (
-              <li key={job._id}>
+              <li className="jobs-li" key={job._id}>
                 <h2>{job.title}</h2>
                 <p>{job.description}</p>
               </li>

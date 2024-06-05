@@ -102,6 +102,7 @@ const News: React.FC = () => {
             {news.map((newsItem) => (
               <li className="news-li" key={newsItem._id}>
                 <h2>{newsItem.title}</h2>
+                <span>____________</span>
                 <p>{newsItem.content}</p>
               </li>
             ))}

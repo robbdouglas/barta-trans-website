@@ -39,6 +39,8 @@
 }
 
 .menu {
+  font-weight: 600;
+  font-size: 1.1rem;
   position: fixed;
   top: 0;
   right: 0;
@@ -80,11 +82,13 @@
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   /* margin: 4px;
   padding: 6px; */
 }
 .close-menu-btn {
+  font-weight: 550;
   padding: 2px 2px;
 }
 
@@ -104,6 +108,7 @@ li {
 a {
   color: white;
   text-decoration: none;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
 }
 a:hover {
   color: #00b3ff;
