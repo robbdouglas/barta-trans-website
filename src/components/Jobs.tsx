@@ -96,7 +96,7 @@ const Jobs: React.FC = () => {
             {jobs.map((job) => (
               <li className="jobs-li" key={job._id}>
                 <h2>{job.title}</h2>
-                <span>____________</span>
+                {/* <span>____________</span> */}
                 <p>{job.description}</p>
               </li>
             ))}
