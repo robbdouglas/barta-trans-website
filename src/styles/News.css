@@ -36,7 +36,7 @@
   border-radius: 15px;
 }
 
-h1 {
+.news-container h1 {
   font-size: 3rem;
   font-weight: 700;
   margin: 10px;
@@ -65,6 +65,7 @@ h1 {
   justify-content: center;
 }
 .news-li h2 {
+  padding-bottom: 1rem;
   font-size: 1.8rem;
   font-weight: 700;
   margin: 10px;
