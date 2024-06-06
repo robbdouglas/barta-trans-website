@@ -7,6 +7,7 @@
   justify-content: space-between;
   align-items: center;
   height: 10vh;
+  min-height: 75px;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000; /* Stellt sicher, dass der Header über anderen Inhalten steht */
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.5); /* Weißer Hintergrundlicht-Schatten */
