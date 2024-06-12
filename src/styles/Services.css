@@ -12,7 +12,7 @@
 
 .services-banner-container {
   background-color: rgba(128, 128, 128, 0.4);
-  min-width: 340px;
+  min-width: 320px;
   max-width: 100%;
   border: none;
   border-radius: 15px;
@@ -24,7 +24,7 @@
 }
 
 .services-banner {
-  min-width: 300px;
+  min-width: 280px;
   max-width: 100%;
   height: 30vh;
   object-fit: cover;
@@ -34,7 +34,7 @@
 }
 
 .services-container h1 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin: 10px;
   text-shadow: #00eaffb3 0px 0px 30px;
@@ -65,7 +65,7 @@
 
 .service-list-item h2 {
   padding: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin: 10px;
   background-color: rgba(128, 128, 128, 0.4);
