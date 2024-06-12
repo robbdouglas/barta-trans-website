@@ -1,5 +1,6 @@
 .jobs-container {
   padding-top: 10vh;
+  min-height: 90vh;
 
   display: flex;
   flex-direction: column;

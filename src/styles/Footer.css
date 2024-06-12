@@ -19,7 +19,7 @@
   align-items: center;
   background: linear-gradient(180deg, rgb(86, 202, 228), rgb(23, 40, 106));
   color: white;
-  height: 10vh;
+  height: 7vh;
   margin-top: auto; /* Fügt automatisch den benötigten Platz hinzu, um den Footer nach unten zu schieben */
 }
 .copyright {
@@ -29,4 +29,11 @@
 .social-media-icons i {
   margin: 0 4px;
   font-size: 1.2em;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-container {
+    height: 10vh;
+    width: 100vw;
+  }
 }

@@ -29,6 +29,17 @@ button:hover {
   background-color: #0056b3;
 }
 
+.deleteBtn {
+  background-color: #ff0000;
+}
+
+.deleteBtn:hover {
+  background-color: #cc0000;
+}
+
+.addBtn {
+  background-color: #4caf50;
+}
 .spinner-overlay {
   position: fixed;
   top: 0;
