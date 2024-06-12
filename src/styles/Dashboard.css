@@ -29,6 +29,9 @@ button:hover {
   background-color: #0056b3;
 }
 
+.deleteBtn {
+  background-color: #ff0000;
+}
 .spinner-overlay {
   position: fixed;
   top: 0;

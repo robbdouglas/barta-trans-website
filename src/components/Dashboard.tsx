@@ -453,6 +453,7 @@ const Dashboard: React.FC = () => {
                       Edit User
                     </button>
                     <button
+                      className="deleteBtn"
                       type="button"
                       onClick={() => handleDeleteUser(user._id)}
                     >
