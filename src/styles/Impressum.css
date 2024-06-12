@@ -1,0 +1,26 @@
+.impressum-container {
+  display: flex;
+  padding-top: 10vh;
+  height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.impressum-container h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 10px;
+  text-shadow: #00eaffb3 0px 0px 30px;
+}
+
+.impressum-container p {
+  margin: 10px;
+}
+
+.impressum-container p strong {
+  font-size: 1.1rem;
+  text-decoration: underline;
+}
