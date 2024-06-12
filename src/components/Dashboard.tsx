@@ -322,7 +322,9 @@ const Dashboard: React.FC = () => {
             onChange={(e) => setJobDescription(e.target.value)}
           />
           <ButtonContainer>
-            <button onClick={addJob}>Add Job</button>
+            <button className="addBtn" onClick={addJob}>
+              Add Job
+            </button>
           </ButtonContainer>
         </div>
         <h2>News</h2>
@@ -362,7 +364,9 @@ const Dashboard: React.FC = () => {
             onChange={(e) => setNewsContent(e.target.value)}
           />
           <ButtonContainer>
-            <button onClick={addNews}>Add News</button>
+            <button className="addBtn" onClick={addNews}>
+              Add News
+            </button>
           </ButtonContainer>
         </div>
         {userRole === "superuser" ? (
