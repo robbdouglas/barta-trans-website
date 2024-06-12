@@ -106,19 +106,19 @@ function Header() {
                 className="language-btn"
                 onClick={() => changeLanguage("de")}
               >
-                DE
+                🇩🇪
               </button>
               <button
                 className="language-btn"
                 onClick={() => changeLanguage("en")}
               >
-                EN
+                🇬🇧
               </button>
               <button
                 className="language-btn"
                 onClick={() => changeLanguage("sk")}
               >
-                SLO
+                🇸🇰
               </button>
             </div>
           </div>
