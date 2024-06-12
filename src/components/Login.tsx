@@ -168,7 +168,6 @@ const PasswordInput = styled.input`
 `;
 const PasswordIcon = styled(FontAwesomeIcon)`
   position: absolute;
-
   top: 18px;
   right: 10px;
   cursor: pointer;
